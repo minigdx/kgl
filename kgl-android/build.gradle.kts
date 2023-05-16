@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
-    id("kotlin-android")
-    id("maven-publish")
+    id("com.github.minigdx.gradle.plugin.developer.mpp")
 }
 
 android {
@@ -25,34 +24,8 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
-    sourceSets {
-        getByName("main") {
-            java.srcDir("src/main/kotlin")
-        }
-    }
 }
-
-val kotlinVersion = rootProject.ext["kotlin_version"] as String
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-
-    implementation(project(":kgl"))
-}
-
-afterEvaluate {
-    publishing {
-        addRepositoryIfPresent(project)
-
-        publications {
-            create<MavenPublication>("maven") {
-                from(project.components["release"])
-
-                groupId = "com.danielgergely.kgl"
-                artifactId = "kgl-android"
-                version = currentVersion
-            }
-        }
-    }
+    androidMainImplementation(project(":kgl"))
 }

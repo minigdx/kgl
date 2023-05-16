@@ -1,6 +1,6 @@
 package com.danielgergely.kgl
 
-import org.khronos.webgl.*
+import org.khronos.webgl.TexImageSource
 
 /**
  * Must be [WebGLShader]

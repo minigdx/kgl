@@ -24,7 +24,6 @@ class BufferTest {
         assertEquals(98f, floatBuffer[0])
     }
 
-
     @Test
     fun intBufferStoresValue() {
         val intBuffer = IntBuffer(1)

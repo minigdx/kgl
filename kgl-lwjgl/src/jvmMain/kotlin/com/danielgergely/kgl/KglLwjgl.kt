@@ -1,10 +1,11 @@
 package com.danielgergely.kgl
 
 import org.lwjgl.opengl.GL33
-import java.nio.*
 import java.nio.ByteBuffer
+import java.nio.DoubleBuffer
 import java.nio.FloatBuffer
 import java.nio.IntBuffer
+import java.nio.ShortBuffer
 
 typealias GL = GL33
 
@@ -394,5 +395,4 @@ object KglLwjgl : Kgl {
             }
         }
     }
-
 }

@@ -178,7 +178,7 @@ object KglIos : Kgl {
     }
 
     override fun vertexAttribPointer(
-        location: Int,
+        location: Intveka,
         size: Int,
         type: Int,
         normalized: Boolean,

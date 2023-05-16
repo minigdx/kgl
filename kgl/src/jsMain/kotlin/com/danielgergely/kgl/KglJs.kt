@@ -1,6 +1,14 @@
 package com.danielgergely.kgl
 
-import org.khronos.webgl.*
+import org.khronos.webgl.Float32Array
+import org.khronos.webgl.WebGLBuffer
+import org.khronos.webgl.WebGLFramebuffer
+import org.khronos.webgl.WebGLProgram
+import org.khronos.webgl.WebGLRenderbuffer
+import org.khronos.webgl.WebGLRenderingContext
+import org.khronos.webgl.WebGLShader
+import org.khronos.webgl.WebGLTexture
+import org.khronos.webgl.WebGLUniformLocation
 
 public class KglJs(private val gl: WebGLRenderingContext) : Kgl {
 
@@ -161,7 +169,6 @@ public class KglJs(private val gl: WebGLRenderingContext) : Kgl {
             buffer.getJsBufferWithOffset()
         )
     }
-
 
     public override fun activeTexture(texture: Int): Unit = gl.activeTexture(texture)
     public override fun bindTexture(target: Int, texture: Texture?): Unit =
