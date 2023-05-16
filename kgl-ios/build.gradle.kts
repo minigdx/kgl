@@ -1,6 +1,5 @@
 plugins {
-    kotlin("multiplatform")
-    id("maven-publish")
+    id("com.github.minigdx.gradle.plugin.developer.mpp")
 }
 
 group = "com.danielgergely.kgl"
@@ -46,8 +45,4 @@ kotlin {
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
-}
-
-publishing {
-    addRepositoryIfPresent(project)
 }

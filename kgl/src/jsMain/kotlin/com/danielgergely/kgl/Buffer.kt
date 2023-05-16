@@ -1,6 +1,11 @@
 package com.danielgergely.kgl
 
-import org.khronos.webgl.*
+import org.khronos.webgl.ArrayBufferView
+import org.khronos.webgl.Float32Array
+import org.khronos.webgl.Int32Array
+import org.khronos.webgl.Uint8Array
+import org.khronos.webgl.get
+import org.khronos.webgl.set
 
 public actual abstract class Buffer {
     public abstract fun getJsBufferWithOffset(): ArrayBufferView
@@ -97,7 +102,6 @@ public actual class ByteBuffer constructor(private val byteBuffer: Uint8Array) :
         return byteBuffer.asDynamic().subarray(position)
     }
 }
-
 
 public actual class IntBuffer constructor(private val buffer: Int32Array) : Buffer() {
     public actual constructor(buffer: Array<Int>) : this(Int32Array(buffer))

@@ -4,7 +4,7 @@ import com.jogamp.opengl.GL3ES3
 import java.awt.image.BufferedImage
 import java.nio.ByteBuffer
 import java.nio.IntBuffer
-import java.util.*
+import java.util.Arrays
 
 typealias GL = GL3ES3
 
@@ -110,7 +110,6 @@ class KglJogl(private val gl: GL) : Kgl {
                 b.arrayOffset(),
                 b.array().size
             )
-
         }
 
         b.rewind()
@@ -129,7 +128,6 @@ class KglJogl(private val gl: GL) : Kgl {
     }
 
     override fun deleteBuffer(buffer: GlBuffer) = gl.glDeleteBuffers(1, intArrayOf(buffer), 0)
-
 
     override fun vertexAttribPointer(
         location: Int,

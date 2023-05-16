@@ -1,41 +1,14 @@
 plugins {
-    kotlin("jvm")
-    id("maven-publish")
+    id("com.github.minigdx.gradle.plugin.developer.mpp")
 }
-
-repositories {
-    mavenCentral()
-}
-
-version = currentVersion
 
 dependencies {
-    implementation(libs.org.jetbrains.kotlin.stdlib)
+    jvmMainImplementation(libs.org.lwjgl)
+    jvmMainImplementation(libs.org.lwjgl.assimp)
+    jvmMainImplementation(libs.org.lwjgl.glfw)
+    jvmMainImplementation(libs.org.lwjgl.openal)
+    jvmMainImplementation(libs.org.lwjgl.opengl)
+    jvmMainImplementation(libs.org.lwjgl.stb)
 
-    implementation(libs.org.lwjgl)
-    implementation(libs.org.lwjgl.assimp)
-    implementation(libs.org.lwjgl.glfw)
-    implementation(libs.org.lwjgl.openal)
-    implementation(libs.org.lwjgl.opengl)
-    implementation(libs.org.lwjgl.stb)
-
-    implementation(project(":kgl"))
-}
-
-java {
-    withSourcesJar()
-}
-
-publishing {
-    addRepositoryIfPresent(project)
-
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "com.danielgergely.kgl"
-            artifactId = "kgl-lwjgl"
-            version = currentVersion
-
-            from(components["java"])
-        }
-    }
+    jvmMainImplementation(project(":kgl"))
 }
