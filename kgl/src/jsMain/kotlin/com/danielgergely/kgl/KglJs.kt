@@ -1,6 +1,7 @@
 package com.danielgergely.kgl
 
 import org.khronos.webgl.Float32Array
+import org.khronos.webgl.Int32Array
 import org.khronos.webgl.WebGLBuffer
 import org.khronos.webgl.WebGLFramebuffer
 import org.khronos.webgl.WebGLProgram

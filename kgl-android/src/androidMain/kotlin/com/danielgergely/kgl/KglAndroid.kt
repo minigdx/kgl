@@ -127,9 +127,9 @@ object KglAndroid : Kgl {
         GL.glUniform4iv(location, value.vSize(4), value, 0)
 
     override fun uniformMatrix3fv(location: Int, transpose: Boolean, value: FloatArray) =
-        GL.glUniformMatrix3fv(location, value.vSize(3*3), transpose, value, 0)
+        GL.glUniformMatrix3fv(location, value.vSize(3 * 3), transpose, value, 0)
     override fun uniformMatrix4fv(location: Int, transpose: Boolean, value: FloatArray) =
-        GL.glUniformMatrix4fv(location, value.vSize(4*4), transpose, value, 0)
+        GL.glUniformMatrix4fv(location, value.vSize(4 * 4), transpose, value, 0)
 
     override fun blendFunc(sFactor: Int, dFactor: Int) = GL.glBlendFunc(sFactor, dFactor)
 

@@ -177,9 +177,9 @@ class KglJogl(private val gl: GL) : Kgl {
         gl.glUniform4iv(location, value.vSize(4), value, 0)
 
     override fun uniformMatrix3fv(location: UniformLocation, transpose: Boolean, value: FloatArray) =
-        gl.glUniformMatrix3fv(location, value.vSize(3*3), transpose, value, 0)
+        gl.glUniformMatrix3fv(location, value.vSize(3 * 3), transpose, value, 0)
     override fun uniformMatrix4fv(location: UniformLocation, transpose: Boolean, value: FloatArray) =
-        gl.glUniformMatrix4fv(location, value.vSize(4*4), transpose, value, 0)
+        gl.glUniformMatrix4fv(location, value.vSize(4 * 4), transpose, value, 0)
 
     override fun blendFunc(sFactor: Int, dFactor: Int) = gl.glBlendFunc(sFactor, dFactor)
 
