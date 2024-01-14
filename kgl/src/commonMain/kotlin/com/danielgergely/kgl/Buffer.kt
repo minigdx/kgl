@@ -10,13 +10,30 @@ public expect class FloatBuffer : Buffer {
     public var position: Int
 
     public fun put(f: Float)
+
     public fun put(floatArray: FloatArray)
-    public fun put(floatArray: FloatArray, offset: Int, length: Int)
-    public operator fun set(pos: Int, f: Float)
+
+    public fun put(
+        floatArray: FloatArray,
+        offset: Int,
+        length: Int,
+    )
+
+    public operator fun set(
+        pos: Int,
+        f: Float,
+    )
 
     public fun get(): Float
+
     public fun get(floatArray: FloatArray)
-    public fun get(floatArray: FloatArray, offset: Int, length: Int)
+
+    public fun get(
+        floatArray: FloatArray,
+        offset: Int,
+        length: Int,
+    )
+
     public operator fun get(pos: Int): Float
 }
 
@@ -28,13 +45,30 @@ public expect class ByteBuffer : Buffer {
     public var position: Int
 
     public fun put(b: Byte)
+
     public fun put(byteArray: ByteArray)
-    public fun put(byteArray: ByteArray, offset: Int, length: Int)
-    public operator fun set(pos: Int, b: Byte)
+
+    public fun put(
+        byteArray: ByteArray,
+        offset: Int,
+        length: Int,
+    )
+
+    public operator fun set(
+        pos: Int,
+        b: Byte,
+    )
 
     public fun get(): Byte
+
     public fun get(byteArray: ByteArray)
-    public fun get(byteArray: ByteArray, offset: Int, length: Int)
+
+    public fun get(
+        byteArray: ByteArray,
+        offset: Int,
+        length: Int,
+    )
+
     public operator fun get(pos: Int): Byte
 }
 
@@ -46,12 +80,29 @@ public expect class IntBuffer : Buffer {
     public var position: Int
 
     public fun put(i: Int)
+
     public fun put(intArray: IntArray)
-    public fun put(intArray: IntArray, offset: Int, length: Int)
-    public operator fun set(pos: Int, i: Int)
+
+    public fun put(
+        intArray: IntArray,
+        offset: Int,
+        length: Int,
+    )
+
+    public operator fun set(
+        pos: Int,
+        i: Int,
+    )
 
     public fun get(): Int
+
     public fun get(intArray: IntArray)
-    public fun get(intArray: IntArray, offset: Int, length: Int)
+
+    public fun get(
+        intArray: IntArray,
+        offset: Int,
+        length: Int,
+    )
+
     public operator fun get(pos: Int): Int
 }

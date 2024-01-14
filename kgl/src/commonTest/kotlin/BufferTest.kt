@@ -5,7 +5,6 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class BufferTest {
-
     @Test
     fun byteBufferStoresValue() {
         val byteBuffer = ByteBuffer(1)

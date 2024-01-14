@@ -29,12 +29,19 @@ public actual class FloatBuffer constructor(buffer: Float32Array) : Buffer() {
         put(floatArray, 0, floatArray.size)
     }
 
-    public actual fun put(floatArray: FloatArray, offset: Int, length: Int) {
+    public actual fun put(
+        floatArray: FloatArray,
+        offset: Int,
+        length: Int,
+    ) {
         floatBuffer.set((floatArray.unsafeCast<Float32Array>()).subarray(offset, length), position)
         position += length
     }
 
-    public actual operator fun set(pos: Int, f: Float) {
+    public actual operator fun set(
+        pos: Int,
+        f: Float,
+    ) {
         floatBuffer[pos] = f
     }
 
@@ -44,7 +51,11 @@ public actual class FloatBuffer constructor(buffer: Float32Array) : Buffer() {
         get(floatArray, 0, floatArray.size)
     }
 
-    public actual fun get(floatArray: FloatArray, offset: Int, length: Int) {
+    public actual fun get(
+        floatArray: FloatArray,
+        offset: Int,
+        length: Int,
+    ) {
         val dest = floatArray.unsafeCast<Float32Array>()
         dest.subarray(offset, length).set(floatBuffer, position)
     }
@@ -72,12 +83,19 @@ public actual class ByteBuffer constructor(private val byteBuffer: Uint8Array) :
         put(byteArray, 0, byteArray.size)
     }
 
-    public actual fun put(byteArray: ByteArray, offset: Int, length: Int) {
+    public actual fun put(
+        byteArray: ByteArray,
+        offset: Int,
+        length: Int,
+    ) {
         byteBuffer.set(byteArray.unsafeCast<Uint8Array>().subarray(offset, length), position)
         position += length
     }
 
-    public actual operator fun set(pos: Int, b: Byte) {
+    public actual operator fun set(
+        pos: Int,
+        b: Byte,
+    ) {
         byteBuffer[pos] = b
     }
 
@@ -89,7 +107,11 @@ public actual class ByteBuffer constructor(private val byteBuffer: Uint8Array) :
         get(byteArray, 0, byteArray.size)
     }
 
-    public actual fun get(byteArray: ByteArray, offset: Int, length: Int) {
+    public actual fun get(
+        byteArray: ByteArray,
+        offset: Int,
+        length: Int,
+    ) {
         val dest = byteArray.unsafeCast<Uint8Array>()
         dest.subarray(offset, length).set(byteBuffer, position)
     }
@@ -119,12 +141,19 @@ public actual class IntBuffer constructor(private val buffer: Int32Array) : Buff
         put(intArray, 0, intArray.size)
     }
 
-    public actual fun put(intArray: IntArray, offset: Int, length: Int) {
+    public actual fun put(
+        intArray: IntArray,
+        offset: Int,
+        length: Int,
+    ) {
         buffer.set((intArray.unsafeCast<Int32Array>()).subarray(offset, length), position)
         position += length
     }
 
-    public actual operator fun set(pos: Int, i: Int) {
+    public actual operator fun set(
+        pos: Int,
+        i: Int,
+    ) {
         buffer[pos] = i
     }
 
@@ -134,7 +163,11 @@ public actual class IntBuffer constructor(private val buffer: Int32Array) : Buff
         get(intArray, 0, intArray.size)
     }
 
-    public actual fun get(intArray: IntArray, offset: Int, length: Int) {
+    public actual fun get(
+        intArray: IntArray,
+        offset: Int,
+        length: Int,
+    ) {
         val dest = intArray.unsafeCast<Int32Array>()
         dest.subarray(offset, length).set(buffer, position)
     }

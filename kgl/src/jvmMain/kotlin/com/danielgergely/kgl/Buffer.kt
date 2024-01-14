@@ -6,9 +6,8 @@ import java.nio.FloatBuffer
 import java.nio.IntBuffer
 
 public actual abstract class Buffer internal constructor(
-    @JvmField @PublishedApi internal val javaBuffer: java.nio.Buffer
+    @JvmField @PublishedApi internal val javaBuffer: java.nio.Buffer,
 ) {
-
     public inline fun withJavaBuffer(block: (java.nio.Buffer) -> Unit) {
         val positionBefore = javaBuffer.position()
         block(javaBuffer)
@@ -17,20 +16,18 @@ public actual abstract class Buffer internal constructor(
 }
 
 public actual class FloatBuffer(buffer: FloatBuffer) : Buffer(buffer) {
-
     public actual constructor(buffer: Array<Float>) : this(buffer.toFloatArray())
     public actual constructor(buffer: FloatArray) : this(
         alloc(buffer.size).apply {
             put(buffer)
             position(0)
-        }
+        },
     )
 
     public actual constructor(size: Int) : this(alloc(size))
 
     private companion object {
-        private fun alloc(size: Int) =
-            ByteBuffer.allocateDirect(size * 4).order(ByteOrder.nativeOrder()).asFloatBuffer()
+        private fun alloc(size: Int) = ByteBuffer.allocateDirect(size * 4).order(ByteOrder.nativeOrder()).asFloatBuffer()
     }
 
     public actual var position: Int
@@ -47,11 +44,18 @@ public actual class FloatBuffer(buffer: FloatBuffer) : Buffer(buffer) {
 
     public actual fun put(floatArray: FloatArray): Unit = put(floatArray, 0, floatArray.size)
 
-    public actual fun put(floatArray: FloatArray, offset: Int, length: Int) {
+    public actual fun put(
+        floatArray: FloatArray,
+        offset: Int,
+        length: Int,
+    ) {
         floatBuffer.put(floatArray, offset, length)
     }
 
-    public actual operator fun set(pos: Int, f: Float) {
+    public actual operator fun set(
+        pos: Int,
+        f: Float,
+    ) {
         floatBuffer.put(pos, f)
     }
 
@@ -61,7 +65,11 @@ public actual class FloatBuffer(buffer: FloatBuffer) : Buffer(buffer) {
         get(floatArray, 0, floatArray.size)
     }
 
-    public actual fun get(floatArray: FloatArray, offset: Int, length: Int) {
+    public actual fun get(
+        floatArray: FloatArray,
+        offset: Int,
+        length: Int,
+    ) {
         floatBuffer.get(floatArray, offset, length)
     }
 
@@ -74,7 +82,7 @@ public actual class ByteBuffer(buffer: ByteBuffer) : Buffer(buffer) {
         alloc(buffer.size).apply {
             put(buffer)
             position(0)
-        }
+        },
     )
 
     public actual constructor(size: Int) : this(alloc(size))
@@ -97,11 +105,18 @@ public actual class ByteBuffer(buffer: ByteBuffer) : Buffer(buffer) {
 
     public actual fun put(byteArray: ByteArray): Unit = put(byteArray, 0, byteArray.size)
 
-    public actual fun put(byteArray: ByteArray, offset: Int, length: Int) {
+    public actual fun put(
+        byteArray: ByteArray,
+        offset: Int,
+        length: Int,
+    ) {
         byteBuffer.put(byteArray, offset, length)
     }
 
-    public actual operator fun set(pos: Int, b: Byte) {
+    public actual operator fun set(
+        pos: Int,
+        b: Byte,
+    ) {
         byteBuffer.put(pos, b)
     }
 
@@ -111,7 +126,11 @@ public actual class ByteBuffer(buffer: ByteBuffer) : Buffer(buffer) {
         get(byteArray, 0, byteArray.size)
     }
 
-    public actual fun get(byteArray: ByteArray, offset: Int, length: Int) {
+    public actual fun get(
+        byteArray: ByteArray,
+        offset: Int,
+        length: Int,
+    ) {
         byteBuffer.get(byteArray, offset, length)
     }
 
@@ -119,13 +138,12 @@ public actual class ByteBuffer(buffer: ByteBuffer) : Buffer(buffer) {
 }
 
 public actual class IntBuffer(private val buffer: IntBuffer) : Buffer(buffer) {
-
     public actual constructor(buffer: Array<Int>) : this(buffer.toIntArray())
     public actual constructor(buffer: IntArray) : this(
         alloc(buffer.size).apply {
             put(buffer)
             position(0)
-        }
+        },
     )
 
     public actual constructor(size: Int) : this(alloc(size))
@@ -146,11 +164,18 @@ public actual class IntBuffer(private val buffer: IntBuffer) : Buffer(buffer) {
 
     public actual fun put(intArray: IntArray): Unit = put(intArray, 0, intArray.size)
 
-    public actual fun put(intArray: IntArray, offset: Int, length: Int) {
+    public actual fun put(
+        intArray: IntArray,
+        offset: Int,
+        length: Int,
+    ) {
         buffer.put(intArray, offset, length)
     }
 
-    public actual operator fun set(pos: Int, i: Int) {
+    public actual operator fun set(
+        pos: Int,
+        i: Int,
+    ) {
         buffer.put(pos, i)
     }
 
@@ -160,7 +185,11 @@ public actual class IntBuffer(private val buffer: IntBuffer) : Buffer(buffer) {
         get(intArray, 0, intArray.size)
     }
 
-    public actual fun get(intArray: IntArray, offset: Int, length: Int) {
+    public actual fun get(
+        intArray: IntArray,
+        offset: Int,
+        length: Int,
+    ) {
         buffer.get(intArray, offset, length)
     }
 
