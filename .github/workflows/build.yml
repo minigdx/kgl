@@ -24,7 +24,7 @@ jobs:
           java-version: 11
           distribution: 'zulu'
       - name: build
-        run: ./gradlew ktlintCheck build
+        run: ./gradlew kotlinUpgradeYarnLock ktlintCheck build
 
 
 env:
