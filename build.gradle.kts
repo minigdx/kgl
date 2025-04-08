@@ -1,7 +1,7 @@
 plugins {
-    id("com.github.minigdx.gradle.plugin.developer.mpp") version "DEV-SNAPSHOT" apply false
-    id("com.github.minigdx.gradle.plugin.developer") version "DEV-SNAPSHOT"
-    id("com.android.library") version "8.2.1" apply false
+    id("com.github.minigdx.gradle.plugin.developer.mpp") version "1.3.1" apply false
+    id("com.github.minigdx.gradle.plugin.developer") version "1.3.1"
+    id("com.android.library") version "7.4.0" apply false
 }
 
 minigdxDeveloper {
