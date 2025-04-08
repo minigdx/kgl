@@ -598,10 +598,36 @@ public class DebugKgl(
         mode: Int,
         count: Int,
         type: Int,
+        offset: Long,
     ) {
         runBefore("drawElements")
-        val ret = kgl.drawElements(mode, count, type)
+        val ret = kgl.drawElements(mode, count, type, offset)
         runAfter("drawElements")
+        return ret
+    }
+
+    override fun drawArraysInstanced(
+        mode: Int,
+        first: Int,
+        count: Int,
+        instanceCount: Int,
+    ) {
+        runBefore("drawArraysInstanced")
+        val ret = kgl.drawArraysInstanced(mode, first, count, instanceCount)
+        runAfter("drawArraysInstanced")
+        return ret
+    }
+
+    override fun drawElementsInstanced(
+        mode: Int,
+        count: Int,
+        type: Int,
+        offset: Long,
+        instanceCount: Int,
+    ) {
+        runBefore("drawElementsInstanced")
+        val ret = kgl.drawElementsInstanced(mode, count, type, offset, instanceCount)
+        runAfter("drawElementsInstanced")
         return ret
     }
 

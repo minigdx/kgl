@@ -397,7 +397,27 @@ class KglJogl(private val gl: GL) : Kgl {
         mode: Int,
         count: Int,
         type: Int,
-    ) = gl.glDrawElements(mode, count, type, 0)
+        offset: Long,
+    ) = gl.glDrawElements(mode, count, type, offset)
+
+    override fun drawArraysInstanced(
+        mode: Int,
+        first: Int,
+        count: Int,
+        instanceCount: Int,
+    ) {
+        return gl.glDrawArraysInstanced(mode, first, count, instanceCount)
+    }
+
+    override fun drawElementsInstanced(
+        mode: Int,
+        count: Int,
+        type: Int,
+        offset: Long,
+        instanceCount: Int,
+    ) {
+        return gl.glDrawElementsInstanced(mode, count, type, offset, instanceCount)
+    }
 
     override fun getError(): Int = gl.glGetError()
 

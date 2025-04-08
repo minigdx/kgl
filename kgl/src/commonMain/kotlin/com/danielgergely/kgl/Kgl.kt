@@ -1,92 +1,92 @@
 package com.danielgergely.kgl
 
-public interface Kgl {
-    public fun createShader(type: Int): Shader?
+interface Kgl {
+    fun createShader(type: Int): Shader?
 
-    public fun shaderSource(
+    fun shaderSource(
         shaderId: Shader,
         source: String,
     )
 
-    public fun compileShader(shaderId: Shader)
+    fun compileShader(shaderId: Shader)
 
-    public fun deleteShader(shaderId: Shader)
+    fun deleteShader(shaderId: Shader)
 
-    public fun getShaderParameter(
+    fun getShaderParameter(
         shader: Shader,
         pname: Int,
     ): Int
 
-    public fun getProgramInfoLog(program: Program): String?
+    fun getProgramInfoLog(program: Program): String?
 
-    public fun getShaderInfoLog(shaderId: Shader): String?
+    fun getShaderInfoLog(shaderId: Shader): String?
 
-    public fun createProgram(): Program?
+    fun createProgram(): Program?
 
-    public fun attachShader(
+    fun attachShader(
         programId: Program,
         shaderId: Shader,
     )
 
-    public fun linkProgram(programId: Program)
+    fun linkProgram(programId: Program)
 
-    public fun useProgram(programId: Program)
+    fun useProgram(programId: Program)
 
-    public fun detachShader(
+    fun detachShader(
         programId: Program,
         shaderId: Shader,
     )
 
-    public fun deleteProgram(programId: Program)
+    fun deleteProgram(programId: Program)
 
-    public fun getProgramParameter(
+    fun getProgramParameter(
         program: Program,
         pname: Int,
     ): Int
 
-    public fun getUniformLocation(
+    fun getUniformLocation(
         programId: Program,
         name: String,
     ): UniformLocation?
 
-    public fun getAttribLocation(
+    fun getAttribLocation(
         programId: Program,
         name: String,
     ): Int
 
-    public fun bindAttribLocation(
+    fun bindAttribLocation(
         programId: Program,
         index: Int,
         name: String,
     )
 
-    public fun enable(cap: Int)
+    fun enable(cap: Int)
 
-    public fun disable(cap: Int)
+    fun disable(cap: Int)
 
-    public fun enableVertexAttribArray(location: Int)
+    fun enableVertexAttribArray(location: Int)
 
-    public fun disableVertexAttribArray(location: Int)
+    fun disableVertexAttribArray(location: Int)
 
-    public fun createBuffer(): GlBuffer
+    fun createBuffer(): GlBuffer
 
-    public fun createBuffers(count: Int): Array<GlBuffer>
+    fun createBuffers(count: Int): Array<GlBuffer>
 
-    public fun bindBuffer(
+    fun bindBuffer(
         target: Int,
         bufferId: GlBuffer?,
     )
 
-    public fun bufferData(
+    fun bufferData(
         target: Int,
         sourceData: Buffer,
         size: Int,
         usage: Int,
     )
 
-    public fun deleteBuffer(buffer: GlBuffer)
+    fun deleteBuffer(buffer: GlBuffer)
 
-    public fun vertexAttribPointer(
+    fun vertexAttribPointer(
         location: Int,
         size: Int,
         type: Int,
@@ -95,73 +95,73 @@ public interface Kgl {
         offset: Int,
     )
 
-    public fun uniform1f(
+    fun uniform1f(
         location: UniformLocation,
         f: Float,
     )
 
-    public fun uniform1fv(
+    fun uniform1fv(
         location: UniformLocation,
         value: FloatArray,
     )
 
-    public fun uniform1i(
+    fun uniform1i(
         location: UniformLocation,
         i: Int,
     )
 
-    public fun uniform1iv(
+    fun uniform1iv(
         location: UniformLocation,
         value: IntArray,
     )
 
-    public fun uniform2f(
+    fun uniform2f(
         location: UniformLocation,
         x: Float,
         y: Float,
     )
 
-    public fun uniform2fv(
+    fun uniform2fv(
         location: UniformLocation,
         value: FloatArray,
     )
 
-    public fun uniform2i(
+    fun uniform2i(
         location: UniformLocation,
         x: Int,
         y: Int,
     )
 
-    public fun uniform2iv(
+    fun uniform2iv(
         location: UniformLocation,
         value: IntArray,
     )
 
-    public fun uniform3f(
+    fun uniform3f(
         location: UniformLocation,
         x: Float,
         y: Float,
         z: Float,
     )
 
-    public fun uniform3fv(
+    fun uniform3fv(
         location: UniformLocation,
         value: FloatArray,
     )
 
-    public fun uniform3i(
+    fun uniform3i(
         location: UniformLocation,
         x: Int,
         y: Int,
         z: Int,
     )
 
-    public fun uniform3iv(
+    fun uniform3iv(
         location: UniformLocation,
         value: IntArray,
     )
 
-    public fun uniform4f(
+    fun uniform4f(
         location: UniformLocation,
         x: Float,
         y: Float,
@@ -169,12 +169,12 @@ public interface Kgl {
         w: Float,
     )
 
-    public fun uniform4fv(
+    fun uniform4fv(
         location: UniformLocation,
         value: FloatArray,
     )
 
-    public fun uniform4i(
+    fun uniform4i(
         location: UniformLocation,
         x: Int,
         y: Int,
@@ -182,53 +182,53 @@ public interface Kgl {
         w: Int,
     )
 
-    public fun uniform4iv(
+    fun uniform4iv(
         location: UniformLocation,
         value: IntArray,
     )
 
-    public fun uniformMatrix3fv(
+    fun uniformMatrix3fv(
         location: UniformLocation,
         transpose: Boolean,
         value: FloatArray,
     )
 
-    public fun uniformMatrix4fv(
+    fun uniformMatrix4fv(
         location: UniformLocation,
         transpose: Boolean,
         value: FloatArray,
     )
 
-    public fun blendFunc(
+    fun blendFunc(
         sFactor: Int,
         dFactor: Int,
     )
 
-    public fun cullFace(mode: Int)
+    fun cullFace(mode: Int)
 
-    public fun viewport(
+    fun viewport(
         x: Int,
         y: Int,
         width: Int,
         height: Int,
     )
 
-    public fun clearColor(
+    fun clearColor(
         r: Float,
         g: Float,
         b: Float,
         a: Float,
     )
 
-    public fun clear(mask: Int)
+    fun clear(mask: Int)
 
-    public fun createTexture(): Texture
+    fun createTexture(): Texture
 
-    public fun createTextures(n: Int): Array<Texture>
+    fun createTextures(n: Int): Array<Texture>
 
-    public fun deleteTexture(texture: Texture)
+    fun deleteTexture(texture: Texture)
 
-    public fun texImage2D(
+    fun texImage2D(
         target: Int,
         level: Int,
         internalFormat: Int,
@@ -236,7 +236,7 @@ public interface Kgl {
         resource: TextureResource,
     )
 
-    public fun texImage2D(
+    fun texImage2D(
         target: Int,
         level: Int,
         internalFormat: Int,
@@ -248,55 +248,79 @@ public interface Kgl {
         buffer: Buffer,
     )
 
-    public fun activeTexture(texture: Int)
+    fun activeTexture(texture: Int)
 
-    public fun bindTexture(
+    fun bindTexture(
         target: Int,
         texture: Texture?,
     )
 
-    public fun generateMipmap(target: Int)
+    fun generateMipmap(target: Int)
 
-    public fun texParameteri(
+    fun texParameteri(
         target: Int,
         pname: Int,
         value: Int,
     )
 
-    public fun createVertexArray(): VertexArrayObject
+    fun createVertexArray(): VertexArrayObject
 
-    public fun bindVertexArray(vertexArrayObject: VertexArrayObject?)
+    fun bindVertexArray(vertexArrayObject: VertexArrayObject?)
 
-    public fun deleteVertexArray(vertexArrayObject: VertexArrayObject)
+    fun deleteVertexArray(vertexArrayObject: VertexArrayObject)
 
-    public fun drawArrays(
+    fun drawArrays(
         mode: Int,
         first: Int,
         count: Int,
     )
 
-    public fun drawElements(
+    fun drawElements(
         mode: Int,
         count: Int,
         type: Int,
+        offset: Long,
     )
 
-    public fun getError(): Int
+    /**
+     * Renders primitives from array data like the gl.drawArrays() method.
+     * In addition, it can execute multiple instances of the range of elements.
+     */
+    fun drawArraysInstanced(
+        mode: Int,
+        first: Int,
+        count: Int,
+        instanceCount: Int,
+    )
 
-    public fun finish()
+    /**
+     * Renders primitives from array data like the gl.drawElements() method.
+     * In addition, it can execute multiple instances of a set of elements.
+     */
+    fun drawElementsInstanced(
+        mode: Int,
+        count: Int,
+        type: Int,
+        offset: Long,
+        instanceCount: Int,
+    )
 
-    public fun bindFramebuffer(
+    fun getError(): Int
+
+    fun finish()
+
+    fun bindFramebuffer(
         target: Int,
         framebuffer: Framebuffer?,
     )
 
-    public fun createFramebuffer(): Framebuffer
+    fun createFramebuffer(): Framebuffer
 
-    public fun deleteFramebuffer(framebuffer: Framebuffer)
+    fun deleteFramebuffer(framebuffer: Framebuffer)
 
-    public fun checkFramebufferStatus(target: Int): Int
+    fun checkFramebufferStatus(target: Int): Int
 
-    public fun framebufferTexture2D(
+    fun framebufferTexture2D(
         target: Int,
         attachment: Int,
         textarget: Int,
@@ -304,34 +328,34 @@ public interface Kgl {
         level: Int,
     )
 
-    public fun isFramebuffer(framebuffer: Framebuffer): Boolean
+    fun isFramebuffer(framebuffer: Framebuffer): Boolean
 
-    public fun bindRenderbuffer(
+    fun bindRenderbuffer(
         target: Int,
         renderbuffer: Renderbuffer?,
     )
 
-    public fun createRenderbuffer(): Renderbuffer
+    fun createRenderbuffer(): Renderbuffer
 
-    public fun deleteRenderbuffer(renderbuffer: Renderbuffer)
+    fun deleteRenderbuffer(renderbuffer: Renderbuffer)
 
-    public fun framebufferRenderbuffer(
+    fun framebufferRenderbuffer(
         target: Int,
         attachment: Int,
         renderbuffertarget: Int,
         renderbuffer: Renderbuffer,
     )
 
-    public fun isRenderbuffer(renderbuffer: Renderbuffer): Boolean
+    fun isRenderbuffer(renderbuffer: Renderbuffer): Boolean
 
-    public fun renderbufferStorage(
+    fun renderbufferStorage(
         target: Int,
         internalformat: Int,
         width: Int,
         height: Int,
     )
 
-    public fun readPixels(
+    fun readPixels(
         x: Int,
         y: Int,
         width: Int,

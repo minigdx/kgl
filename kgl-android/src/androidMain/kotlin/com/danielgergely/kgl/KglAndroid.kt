@@ -3,7 +3,7 @@ package com.danielgergely.kgl
 import android.opengl.GLES20
 import android.opengl.GLES30
 
-typealias GL = GLES20
+typealias GL = GLES30
 
 object KglAndroid : Kgl {
     override fun createShader(type: Int): Shader? {
@@ -342,7 +342,23 @@ object KglAndroid : Kgl {
         mode: Int,
         count: Int,
         type: Int,
-    ) = GL.glDrawElements(mode, count, type, 0)
+        offset: Long,
+    ) = GL.glDrawElements(mode, count, type, offset.toInt())
+
+    override fun drawArraysInstanced(
+        mode: Int,
+        first: Int,
+        count: Int,
+        instanceCount: Int,
+    ) = GL.glDrawArraysInstanced(mode, first, count, instanceCount)
+
+    override fun drawElementsInstanced(
+        mode: Int,
+        count: Int,
+        type: Int,
+        offset: Long,
+        instanceCount: Int,
+    ) = GL.glDrawElementsInstanced(mode, count, type, offset.toInt(), instanceCount)
 
     override fun getError(): Int = GL.glGetError()
 

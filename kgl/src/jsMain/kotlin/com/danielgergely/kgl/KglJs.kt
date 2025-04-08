@@ -6,24 +6,23 @@ import org.khronos.webgl.WebGLBuffer
 import org.khronos.webgl.WebGLFramebuffer
 import org.khronos.webgl.WebGLProgram
 import org.khronos.webgl.WebGLRenderbuffer
-import org.khronos.webgl.WebGLRenderingContext
 import org.khronos.webgl.WebGLShader
 import org.khronos.webgl.WebGLTexture
 import org.khronos.webgl.WebGLUniformLocation
 
-public class KglJs(private val gl: WebGLRenderingContext) : Kgl {
-    public override fun createShader(type: Int): Shader? = gl.createShader(type)
+class KglJs(private val gl: WebGL2RenderingContext) : Kgl {
+    override fun createShader(type: Int): Shader? = gl.createShader(type)
 
-    public override fun shaderSource(
+    override fun shaderSource(
         shaderId: Shader,
         source: String,
     ): Unit = gl.shaderSource(shaderId.unsafeCast<WebGLShader>(), source)
 
-    public override fun compileShader(shaderId: Shader): Unit = gl.compileShader(shaderId.unsafeCast<WebGLShader>())
+    override fun compileShader(shaderId: Shader): Unit = gl.compileShader(shaderId.unsafeCast<WebGLShader>())
 
-    public override fun deleteShader(shaderId: Shader): Unit = gl.deleteShader(shaderId.unsafeCast<WebGLShader>())
+    override fun deleteShader(shaderId: Shader): Unit = gl.deleteShader(shaderId.unsafeCast<WebGLShader>())
 
-    public override fun getShaderParameter(
+    override fun getShaderParameter(
         shader: Shader,
         pname: Int,
     ): Int {
@@ -35,74 +34,73 @@ public class KglJs(private val gl: WebGLRenderingContext) : Kgl {
         return value as Int
     }
 
-    public override fun getProgramInfoLog(program: Program): String? = gl.getProgramInfoLog(program.unsafeCast<WebGLProgram>())
+    override fun getProgramInfoLog(program: Program): String? = gl.getProgramInfoLog(program.unsafeCast<WebGLProgram>())
 
-    public override fun getShaderInfoLog(shaderId: Shader): String? = gl.getShaderInfoLog(shaderId.unsafeCast<WebGLShader>())
+    override fun getShaderInfoLog(shaderId: Shader): String? = gl.getShaderInfoLog(shaderId.unsafeCast<WebGLShader>())
 
-    public override fun getProgramParameter(
+    override fun getProgramParameter(
         program: Program,
         pname: Int,
     ): Int {
         val value = gl.getProgramParameter(program.unsafeCast<WebGLProgram>(), pname)!!
-
         if (value is Boolean) {
             return if (value) GL_TRUE else GL_FALSE
         }
         return value as Int
     }
 
-    public override fun createProgram(): Program? = gl.createProgram()
+    override fun createProgram(): Program? = gl.createProgram()
 
-    public override fun attachShader(
+    override fun attachShader(
         programId: Program,
         shaderId: Shader,
     ): Unit = gl.attachShader(programId.unsafeCast<WebGLProgram>(), shaderId.unsafeCast<WebGLShader>())
 
-    public override fun linkProgram(programId: Program): Unit = gl.linkProgram(programId.unsafeCast<WebGLProgram>())
+    override fun linkProgram(programId: Program): Unit = gl.linkProgram(programId.unsafeCast<WebGLProgram>())
 
-    public override fun useProgram(programId: Program): Unit = gl.useProgram(programId.unsafeCast<WebGLProgram>())
+    override fun useProgram(programId: Program): Unit = gl.useProgram(programId.unsafeCast<WebGLProgram>())
 
-    public override fun detachShader(
+    override fun detachShader(
         programId: Program,
         shaderId: Shader,
     ): Unit = gl.detachShader(programId.unsafeCast<WebGLProgram>(), shaderId.unsafeCast<WebGLShader>())
 
-    public override fun deleteProgram(programId: Program): Unit = gl.deleteProgram(programId.unsafeCast<WebGLProgram>())
+    override fun deleteProgram(programId: Program): Unit = gl.deleteProgram(programId.unsafeCast<WebGLProgram>())
 
-    public override fun getUniformLocation(
+    override fun getUniformLocation(
         programId: Program,
         name: String,
     ): UniformLocation? = gl.getUniformLocation(programId.unsafeCast<WebGLProgram>(), name)
 
-    public override fun getAttribLocation(
+    override fun getAttribLocation(
         programId: Program,
         name: String,
     ): Int = gl.getAttribLocation(programId.unsafeCast<WebGLProgram>(), name)
 
-    public override fun bindAttribLocation(
+    override fun bindAttribLocation(
         programId: Program,
         index: Int,
         name: String,
     ): Unit = gl.bindAttribLocation(programId.unsafeCast<WebGLProgram>(), index, name)
 
-    public override fun enableVertexAttribArray(location: Int): Unit = gl.enableVertexAttribArray(location)
+    override fun enableVertexAttribArray(location: Int): Unit = gl.enableVertexAttribArray(location)
 
-    public override fun disableVertexAttribArray(location: Int): Unit = gl.disableVertexAttribArray(location)
+    override fun disableVertexAttribArray(location: Int): Unit = gl.disableVertexAttribArray(location)
 
-    public override fun enable(cap: Int): Unit = gl.enable(cap)
+    override fun enable(cap: Int): Unit = gl.enable(cap)
 
-    public override fun disable(cap: Int): Unit = gl.disable(cap)
+    override fun disable(cap: Int): Unit = gl.disable(cap)
 
-    public override fun createBuffer(): GlBuffer = gl.createBuffer() ?: throw Exception()
+    override fun createBuffer(): GlBuffer = gl.createBuffer() ?: throw Exception()
 
-    public override fun createBuffers(count: Int): Array<GlBuffer> = Array(count) { gl.createBuffer() ?: throw Exception() }
+    override fun createBuffers(count: Int): Array<GlBuffer> = Array(count) { gl.createBuffer() ?: throw Exception() }
 
-    public override fun bindBuffer(
+    override fun bindBuffer(
         target: Int,
         bufferId: GlBuffer?,
     ): Unit = gl.bindBuffer(target, bufferId.unsafeCast<WebGLBuffer>())
 
-    public override fun bufferData(
+    override fun bufferData(
         target: Int,
         sourceData: Buffer,
         size: Int,
@@ -111,9 +109,9 @@ public class KglJs(private val gl: WebGLRenderingContext) : Kgl {
         gl.bufferData(target, sourceData.getJsBufferWithOffset(), usage)
     }
 
-    public override fun deleteBuffer(buffer: GlBuffer): Unit = gl.deleteBuffer(buffer.unsafeCast<WebGLBuffer>())
+    override fun deleteBuffer(buffer: GlBuffer): Unit = gl.deleteBuffer(buffer.unsafeCast<WebGLBuffer>())
 
-    public override fun vertexAttribPointer(
+    override fun vertexAttribPointer(
         location: Int,
         size: Int,
         type: Int,
@@ -122,73 +120,73 @@ public class KglJs(private val gl: WebGLRenderingContext) : Kgl {
         offset: Int,
     ): Unit = gl.vertexAttribPointer(location, size, type, normalized, stride, offset)
 
-    public override fun uniform1f(
+    override fun uniform1f(
         location: UniformLocation,
         f: Float,
     ): Unit = gl.uniform1f(location.unsafeCast<WebGLUniformLocation>(), f)
 
-    public override fun uniform1fv(
+    override fun uniform1fv(
         location: UniformLocation,
         value: FloatArray,
     ): Unit = gl.uniform1fv(location.unsafeCast<WebGLUniformLocation>(), value.unsafeCast<Float32Array>())
 
-    public override fun uniform1i(
+    override fun uniform1i(
         location: UniformLocation,
         i: Int,
     ): Unit = gl.uniform1i(location.unsafeCast<WebGLUniformLocation>(), i)
 
-    public override fun uniform1iv(
+    override fun uniform1iv(
         location: UniformLocation,
         value: IntArray,
     ): Unit = gl.uniform1iv(location.unsafeCast<WebGLUniformLocation>(), value.unsafeCast<Int32Array>())
 
-    public override fun uniform2f(
+    override fun uniform2f(
         location: UniformLocation,
         x: Float,
         y: Float,
     ): Unit = gl.uniform2f(location.unsafeCast<WebGLUniformLocation>(), x, y)
 
-    public override fun uniform2fv(
+    override fun uniform2fv(
         location: UniformLocation,
         value: FloatArray,
     ): Unit = gl.uniform2fv(location.unsafeCast<WebGLUniformLocation>(), value.unsafeCast<Float32Array>())
 
-    public override fun uniform2i(
+    override fun uniform2i(
         location: UniformLocation,
         x: Int,
         y: Int,
     ): Unit = gl.uniform2i(location.unsafeCast<WebGLUniformLocation>(), x, y)
 
-    public override fun uniform2iv(
+    override fun uniform2iv(
         location: UniformLocation,
         value: IntArray,
     ): Unit = gl.uniform2iv(location.unsafeCast<WebGLUniformLocation>(), value.unsafeCast<Int32Array>())
 
-    public override fun uniform3f(
+    override fun uniform3f(
         location: UniformLocation,
         x: Float,
         y: Float,
         z: Float,
     ): Unit = gl.uniform3f(location.unsafeCast<WebGLUniformLocation>(), x, y, z)
 
-    public override fun uniform3fv(
+    override fun uniform3fv(
         location: UniformLocation,
         value: FloatArray,
     ): Unit = gl.uniform3fv(location.unsafeCast<WebGLUniformLocation>(), value.unsafeCast<Float32Array>())
 
-    public override fun uniform3i(
+    override fun uniform3i(
         location: UniformLocation,
         x: Int,
         y: Int,
         z: Int,
     ): Unit = gl.uniform3i(location.unsafeCast<WebGLUniformLocation>(), x, y, z)
 
-    public override fun uniform3iv(
+    override fun uniform3iv(
         location: UniformLocation,
         value: IntArray,
     ): Unit = gl.uniform3iv(location.unsafeCast<WebGLUniformLocation>(), value.unsafeCast<Int32Array>())
 
-    public override fun uniform4f(
+    override fun uniform4f(
         location: UniformLocation,
         x: Float,
         y: Float,
@@ -196,12 +194,12 @@ public class KglJs(private val gl: WebGLRenderingContext) : Kgl {
         w: Float,
     ): Unit = gl.uniform4f(location.unsafeCast<WebGLUniformLocation>(), x, y, z, w)
 
-    public override fun uniform4fv(
+    override fun uniform4fv(
         location: UniformLocation,
         value: FloatArray,
     ): Unit = gl.uniform4fv(location.unsafeCast<WebGLUniformLocation>(), value.unsafeCast<Float32Array>())
 
-    public override fun uniform4i(
+    override fun uniform4i(
         location: UniformLocation,
         x: Int,
         y: Int,
@@ -209,12 +207,12 @@ public class KglJs(private val gl: WebGLRenderingContext) : Kgl {
         w: Int,
     ): Unit = gl.uniform4i(location.unsafeCast<WebGLUniformLocation>(), x, y, z, w)
 
-    public override fun uniform4iv(
+    override fun uniform4iv(
         location: UniformLocation,
         value: IntArray,
     ): Unit = gl.uniform4iv(location.unsafeCast<WebGLUniformLocation>(), value.unsafeCast<Int32Array>())
 
-    public override fun uniformMatrix3fv(
+    override fun uniformMatrix3fv(
         location: UniformLocation,
         transpose: Boolean,
         value: dynamic,
@@ -222,7 +220,7 @@ public class KglJs(private val gl: WebGLRenderingContext) : Kgl {
         gl.uniformMatrix3fv(location.unsafeCast<WebGLUniformLocation>(), transpose, value.unsafeCast<Float32Array>())
     }
 
-    public override fun uniformMatrix4fv(
+    override fun uniformMatrix4fv(
         location: UniformLocation,
         transpose: Boolean,
         value: dynamic,
@@ -230,36 +228,36 @@ public class KglJs(private val gl: WebGLRenderingContext) : Kgl {
         gl.uniformMatrix4fv(location.unsafeCast<WebGLUniformLocation>(), transpose, value.unsafeCast<Float32Array>())
     }
 
-    public override fun viewport(
+    override fun viewport(
         x: Int,
         y: Int,
         width: Int,
         height: Int,
     ): Unit = gl.viewport(x, y, width, height)
 
-    public override fun clear(mask: Int): Unit = gl.clear(mask)
+    override fun clear(mask: Int): Unit = gl.clear(mask)
 
-    public override fun clearColor(
+    override fun clearColor(
         r: Float,
         g: Float,
         b: Float,
         a: Float,
     ): Unit = gl.clearColor(r, g, b, a)
 
-    public override fun blendFunc(
+    override fun blendFunc(
         sFactor: Int,
         dFactor: Int,
     ): Unit = gl.blendFunc(sFactor, dFactor)
 
-    public override fun cullFace(mode: Int): Unit = gl.cullFace(mode)
+    override fun cullFace(mode: Int): Unit = gl.cullFace(mode)
 
-    public override fun createTexture(): Texture = gl.createTexture() ?: throw Exception()
+    override fun createTexture(): Texture = gl.createTexture() ?: throw Exception()
 
-    public override fun createTextures(n: Int): Array<Texture> = Array(n) { gl.createTexture() ?: throw Exception() }
+    override fun createTextures(n: Int): Array<Texture> = Array(n) { gl.createTexture() ?: throw Exception() }
 
-    public override fun deleteTexture(texture: Texture): Unit = gl.deleteTexture(texture.unsafeCast<WebGLTexture>())
+    override fun deleteTexture(texture: Texture): Unit = gl.deleteTexture(texture.unsafeCast<WebGLTexture>())
 
-    public override fun texImage2D(
+    override fun texImage2D(
         target: Int,
         level: Int,
         internalFormat: Int,
@@ -267,7 +265,7 @@ public class KglJs(private val gl: WebGLRenderingContext) : Kgl {
         resource: TextureResource,
     ): Unit = gl.texImage2D(target, level, internalFormat, GL_RGBA, GL_UNSIGNED_BYTE, resource.image)
 
-    public override fun texImage2D(
+    override fun texImage2D(
         target: Int,
         level: Int,
         internalFormat: Int,
@@ -291,57 +289,77 @@ public class KglJs(private val gl: WebGLRenderingContext) : Kgl {
         )
     }
 
-    public override fun activeTexture(texture: Int): Unit = gl.activeTexture(texture)
+    override fun activeTexture(texture: Int): Unit = gl.activeTexture(texture)
 
-    public override fun bindTexture(
+    override fun bindTexture(
         target: Int,
         texture: Texture?,
     ): Unit = gl.bindTexture(target, texture.unsafeCast<WebGLTexture>())
 
-    public override fun generateMipmap(target: Int): Unit = gl.generateMipmap(target)
+    override fun generateMipmap(target: Int): Unit = gl.generateMipmap(target)
 
-    public override fun texParameteri(
+    override fun texParameteri(
         target: Int,
         pname: Int,
         value: Int,
     ): Unit = gl.texParameteri(target, pname, value)
 
-    public override fun createVertexArray(): VertexArrayObject = (gl as WebGL2RenderingContext).createVertexArray() ?: throw Exception()
+    override fun createVertexArray(): VertexArrayObject = gl.createVertexArray() ?: throw Exception()
 
-    public override fun bindVertexArray(vertexArrayObject: VertexArrayObject?): Unit =
-        (gl as WebGL2RenderingContext).bindVertexArray(vertexArrayObject.unsafeCast<WebGLVertexArrayObject>())
+    override fun bindVertexArray(vertexArrayObject: VertexArrayObject?): Unit =
+        gl.bindVertexArray(vertexArrayObject.unsafeCast<WebGLVertexArrayObject>())
 
-    public override fun deleteVertexArray(vertexArrayObject: VertexArrayObject): Unit =
-        (gl as WebGL2RenderingContext).deleteVertexArray(vertexArrayObject.unsafeCast<WebGLVertexArrayObject>())
+    override fun deleteVertexArray(vertexArrayObject: VertexArrayObject): Unit =
+        gl.deleteVertexArray(vertexArrayObject.unsafeCast<WebGLVertexArrayObject>())
 
-    public override fun drawArrays(
+    override fun drawArrays(
         mode: Int,
         first: Int,
         count: Int,
     ): Unit = gl.drawArrays(mode, first, count)
 
-    public override fun drawElements(
+    override fun drawElements(
         mode: Int,
         count: Int,
         type: Int,
-    ): Unit = gl.drawElements(mode, count, type, 0)
+        offset: Long,
+    ): Unit = gl.drawElements(mode, count, type, offset.toInt())
 
-    public override fun getError(): Int = gl.getError()
+    override fun drawArraysInstanced(
+        mode: Int,
+        first: Int,
+        count: Int,
+        instanceCount: Int,
+    ) {
+        return gl.drawArraysInstanced(mode, first, count, instanceCount)
+    }
 
-    public override fun finish(): Unit = gl.finish()
+    override fun drawElementsInstanced(
+        mode: Int,
+        count: Int,
+        type: Int,
+        offset: Long,
+        instanceCount: Int,
+    ) {
+        return gl.drawElementsInstanced(mode, count, type, offset.toInt(), instanceCount)
+    }
 
-    public override fun bindFramebuffer(
+    override fun getError(): Int = gl.getError()
+
+    override fun finish(): Unit = gl.finish()
+
+    override fun bindFramebuffer(
         target: Int,
         framebuffer: Framebuffer?,
     ): Unit = gl.bindFramebuffer(target, framebuffer.unsafeCast<WebGLFramebuffer>())
 
-    public override fun createFramebuffer(): Framebuffer = gl.createFramebuffer() ?: throw Exception()
+    override fun createFramebuffer(): Framebuffer = gl.createFramebuffer() ?: throw Exception()
 
-    public override fun deleteFramebuffer(framebuffer: Framebuffer): Unit = gl.deleteFramebuffer(framebuffer.unsafeCast<WebGLFramebuffer>())
+    override fun deleteFramebuffer(framebuffer: Framebuffer): Unit = gl.deleteFramebuffer(framebuffer.unsafeCast<WebGLFramebuffer>())
 
-    public override fun checkFramebufferStatus(target: Int): Int = gl.checkFramebufferStatus(target)
+    override fun checkFramebufferStatus(target: Int): Int = gl.checkFramebufferStatus(target)
 
-    public override fun framebufferTexture2D(
+    override fun framebufferTexture2D(
         target: Int,
         attachment: Int,
         textarget: Int,
@@ -349,36 +367,34 @@ public class KglJs(private val gl: WebGLRenderingContext) : Kgl {
         level: Int,
     ): Unit = gl.framebufferTexture2D(target, attachment, textarget, texture.unsafeCast<WebGLTexture>(), level)
 
-    public override fun isFramebuffer(framebuffer: Framebuffer): Boolean = gl.isFramebuffer(framebuffer.unsafeCast<WebGLFramebuffer>())
+    override fun isFramebuffer(framebuffer: Framebuffer): Boolean = gl.isFramebuffer(framebuffer.unsafeCast<WebGLFramebuffer>())
 
-    public override fun bindRenderbuffer(
+    override fun bindRenderbuffer(
         target: Int,
         renderbuffer: Renderbuffer?,
     ): Unit = gl.bindRenderbuffer(target, renderbuffer.unsafeCast<WebGLRenderbuffer>())
 
-    public override fun createRenderbuffer(): Renderbuffer = gl.createRenderbuffer() ?: throw Exception()
+    override fun createRenderbuffer(): Renderbuffer = gl.createRenderbuffer() ?: throw Exception()
 
-    public override fun deleteRenderbuffer(renderbuffer: Renderbuffer): Unit =
-        gl.deleteRenderbuffer(renderbuffer.unsafeCast<WebGLRenderbuffer>())
+    override fun deleteRenderbuffer(renderbuffer: Renderbuffer): Unit = gl.deleteRenderbuffer(renderbuffer.unsafeCast<WebGLRenderbuffer>())
 
-    public override fun framebufferRenderbuffer(
+    override fun framebufferRenderbuffer(
         target: Int,
         attachment: Int,
         renderbuffertarget: Int,
         renderbuffer: Renderbuffer,
     ): Unit = gl.framebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer.unsafeCast<WebGLRenderbuffer>())
 
-    public override fun isRenderbuffer(renderbuffer: Renderbuffer): Boolean =
-        gl.isRenderbuffer(renderbuffer.unsafeCast<WebGLRenderbuffer>())
+    override fun isRenderbuffer(renderbuffer: Renderbuffer): Boolean = gl.isRenderbuffer(renderbuffer.unsafeCast<WebGLRenderbuffer>())
 
-    public override fun renderbufferStorage(
+    override fun renderbufferStorage(
         target: Int,
         internalformat: Int,
         width: Int,
         height: Int,
     ): Unit = gl.renderbufferStorage(target, internalformat, width, height)
 
-    public override fun readPixels(
+    override fun readPixels(
         x: Int,
         y: Int,
         width: Int,

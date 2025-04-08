@@ -156,8 +156,28 @@ object KglLwjgl : Kgl {
         mode: Int,
         count: Int,
         type: Int,
+        offset: Long,
     ) {
-        GL.glDrawElements(mode, count, type, 0)
+        GL.glDrawElements(mode, count, type, offset)
+    }
+
+    override fun drawArraysInstanced(
+        mode: Int,
+        first: Int,
+        count: Int,
+        instanceCount: Int,
+    ) {
+        GL.glDrawArraysInstanced(mode, first, count, instanceCount)
+    }
+
+    override fun drawElementsInstanced(
+        mode: Int,
+        count: Int,
+        type: Int,
+        offset: Long,
+        instanceCount: Int,
+    ) {
+        GL.glDrawElementsInstanced(mode, count, type, offset, instanceCount)
     }
 
     override fun getError(): Int {
