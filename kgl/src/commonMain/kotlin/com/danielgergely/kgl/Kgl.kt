@@ -245,7 +245,7 @@ interface Kgl {
         border: Int,
         format: Int,
         type: Int,
-        buffer: Buffer,
+        buffer: Buffer?,
     )
 
     fun activeTexture(texture: Int)

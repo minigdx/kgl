@@ -299,11 +299,11 @@ object KglAndroid : Kgl {
         border: Int,
         format: Int,
         type: Int,
-        buffer: Buffer,
+        buffer: Buffer?,
     ) {
-        buffer.withJavaBuffer { javaBuffer ->
+        buffer?.withJavaBuffer { javaBuffer ->
             GL.glTexImage2D(target, level, internalFormat, width, height, border, format, type, javaBuffer)
-        }
+        } ?: GL.glTexImage2D(target, level, internalFormat, width, height, border, format, type, null)
     }
 
     override fun activeTexture(texture: Int) = GL.glActiveTexture(texture)

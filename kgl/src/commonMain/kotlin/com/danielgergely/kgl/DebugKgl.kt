@@ -519,7 +519,7 @@ public class DebugKgl(
         border: Int,
         format: Int,
         type: Int,
-        buffer: Buffer,
+        buffer: Buffer?,
     ) {
         runBefore("texImage2D")
         val ret = kgl.texImage2D(target, level, internalFormat, width, height, border, format, type, buffer)

@@ -1,6 +1,6 @@
 plugins {
-    id("com.github.minigdx.gradle.plugin.developer.mpp") version "1.3.1" apply false
-    id("com.github.minigdx.gradle.plugin.developer") version "1.3.1"
+    id("com.github.minigdx.gradle.plugin.developer.mpp") version "1.0-KOTLIN20" apply false
+    id("com.github.minigdx.gradle.plugin.developer") version "1.0-KOTLIN20"
     id("com.android.library") version "7.4.0" apply false
 }
 

@@ -274,7 +274,7 @@ class KglJs(private val gl: WebGL2RenderingContext) : Kgl {
         border: Int,
         format: Int,
         type: Int,
-        buffer: Buffer,
+        buffer: Buffer?,
     ) {
         gl.texImage2D(
             target,
@@ -285,7 +285,7 @@ class KglJs(private val gl: WebGL2RenderingContext) : Kgl {
             border,
             format,
             type,
-            buffer.getJsBufferWithOffset(),
+            buffer?.getJsBufferWithOffset(),
         )
     }
 

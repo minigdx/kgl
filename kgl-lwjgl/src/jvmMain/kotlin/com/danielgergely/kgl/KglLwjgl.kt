@@ -270,9 +270,9 @@ object KglLwjgl : Kgl {
         border: Int,
         format: Int,
         type: Int,
-        buffer: Buffer,
+        buffer: Buffer?,
     ) {
-        buffer.withJavaBuffer { javaBuffer ->
+        buffer?.withJavaBuffer { javaBuffer ->
             when (javaBuffer) {
                 is ByteBuffer ->
                     GL.glTexImage2D(
@@ -341,7 +341,17 @@ object KglLwjgl : Kgl {
 
                 else -> throw IllegalArgumentException("unknown buffer type ${javaBuffer.javaClass}")
             }
-        }
+        } ?: GL.glTexImage2D(
+            target,
+            level,
+            internalFormat,
+            width,
+            height,
+            border,
+            format,
+            type,
+            null as IntBuffer?,
+        )
     }
 
     override fun texParameteri(
