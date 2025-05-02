@@ -5,10 +5,26 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-android/kgl.kgl-android.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-android/kgl.kgl-android.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-android/kgl.kgl-android.main.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-android/kgl.kgl-android.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-android/kgl.kgl-android.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-android/kgl.kgl-android.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-android/kgl.kgl-android.wasmJsMain.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-android/kgl.kgl-android.wasmJsMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-android/kgl.kgl-android.wasmJsTest.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-android/kgl.kgl-android.wasmJsTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-android/kgl.kgl-android.wasmWasiMain.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-android/kgl.kgl-android.wasmWasiMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-android/kgl.kgl-android.wasmWasiTest.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-android/kgl.kgl-android.wasmWasiTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-jogl/kgl.kgl-jogl.main.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-jogl/kgl.kgl-jogl.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-jogl/kgl.kgl-jogl.test.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-jogl/kgl.kgl-jogl.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-jogl/kgl.kgl-jogl.wasmJsMain.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-jogl/kgl.kgl-jogl.wasmJsMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-jogl/kgl.kgl-jogl.wasmJsTest.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-jogl/kgl.kgl-jogl.wasmJsTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-jogl/kgl.kgl-jogl.wasmWasiMain.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-jogl/kgl.kgl-jogl.wasmWasiMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-jogl/kgl.kgl-jogl.wasmWasiTest.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-jogl/kgl.kgl-jogl.wasmWasiTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-lwjgl/kgl.kgl-lwjgl.main.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-lwjgl/kgl.kgl-lwjgl.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-lwjgl/kgl.kgl-lwjgl.test.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-lwjgl/kgl.kgl-lwjgl.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-lwjgl/kgl.kgl-lwjgl.wasmJsMain.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-lwjgl/kgl.kgl-lwjgl.wasmJsMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-lwjgl/kgl.kgl-lwjgl.wasmJsTest.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-lwjgl/kgl.kgl-lwjgl.wasmJsTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-lwjgl/kgl.kgl-lwjgl.wasmWasiMain.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-lwjgl/kgl.kgl-lwjgl.wasmWasiMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl-lwjgl/kgl.kgl-lwjgl.wasmWasiTest.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl-lwjgl/kgl.kgl-lwjgl.wasmWasiTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl/kgl.kgl.wasmJsMain.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl/kgl.kgl.wasmJsMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl/kgl.kgl.wasmJsTest.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl/kgl.kgl.wasmJsTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl/kgl.kgl.wasmWasiMain.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl/kgl.kgl.wasmWasiMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl/kgl.kgl.wasmWasiTest.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl/kgl.kgl.wasmWasiTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl.main.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/kgl.test.iml" filepath="$PROJECT_DIR$/.idea/modules/kgl.test.iml" />
     </modules>

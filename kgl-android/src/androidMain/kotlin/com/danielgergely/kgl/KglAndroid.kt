@@ -430,6 +430,15 @@ object KglAndroid : Kgl {
             GL.glReadPixels(x, y, width, height, format, type, javaBuffer)
         }
     }
+
+    override fun scissor(
+        x: Int,
+        y: Int,
+        width: Int,
+        height: Int,
+    ) {
+        GL.glScissor(x, y, width, height)
+    }
 }
 
 private fun FloatArray.vSize(vecSize: Int): Int {

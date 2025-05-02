@@ -344,6 +344,15 @@ class KglJs(private val gl: WebGL2RenderingContext) : Kgl {
         return gl.drawElementsInstanced(mode, count, type, offset.toInt(), instanceCount)
     }
 
+    override fun scissor(
+        x: Int,
+        y: Int,
+        width: Int,
+        height: Int,
+    ) {
+        return gl.scissor(x, y, width, height)
+    }
+
     override fun getError(): Int = gl.getError()
 
     override fun finish(): Unit = gl.finish()

@@ -364,4 +364,11 @@ interface Kgl {
         type: Int,
         buffer: Buffer,
     )
+
+    fun scissor(
+        x: Int,
+        y: Int,
+        width: Int,
+        height: Int,
+    )
 }

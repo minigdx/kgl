@@ -765,4 +765,16 @@ public class DebugKgl(
         runAfter("readPixels")
         return ret
     }
+
+    override fun scissor(
+        x: Int,
+        y: Int,
+        width: Int,
+        height: Int,
+    ) {
+        runBefore("scissor")
+        val ret = kgl.scissor(x, y, width, height)
+        runAfter("scissor")
+        return ret
+    }
 }

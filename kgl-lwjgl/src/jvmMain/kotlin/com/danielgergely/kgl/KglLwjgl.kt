@@ -581,4 +581,13 @@ object KglLwjgl : Kgl {
             }
         }
     }
+
+    override fun scissor(
+        x: Int,
+        y: Int,
+        width: Int,
+        height: Int,
+    ) {
+        GL.glScissor(x, y, width, height)
+    }
 }

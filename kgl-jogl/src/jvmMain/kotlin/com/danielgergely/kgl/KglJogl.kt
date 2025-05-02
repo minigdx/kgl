@@ -419,6 +419,15 @@ class KglJogl(private val gl: GL) : Kgl {
         return gl.glDrawElementsInstanced(mode, count, type, offset, instanceCount)
     }
 
+    override fun scissor(
+        x: Int,
+        y: Int,
+        width: Int,
+        height: Int,
+    ) {
+        return gl.glScissor(x, y, width, height)
+    }
+
     override fun getError(): Int = gl.glGetError()
 
     override fun finish() = gl.glFinish()
