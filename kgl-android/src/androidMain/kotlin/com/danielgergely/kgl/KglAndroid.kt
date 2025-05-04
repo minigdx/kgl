@@ -439,6 +439,13 @@ object KglAndroid : Kgl {
     ) {
         GL.glScissor(x, y, width, height)
     }
+
+    override fun pixelStorei(
+        pname: Int,
+        parameter: Int,
+    ) {
+        GL.glPixelStorei(pname, parameter)
+    }
 }
 
 private fun FloatArray.vSize(vecSize: Int): Int {

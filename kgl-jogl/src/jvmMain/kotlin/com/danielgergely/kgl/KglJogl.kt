@@ -428,6 +428,13 @@ class KglJogl(private val gl: GL) : Kgl {
         return gl.glScissor(x, y, width, height)
     }
 
+    override fun pixelStorei(
+        pname: Int,
+        parameter: Int,
+    ) {
+        return gl.glPixelStorei(pname, parameter)
+    }
+
     override fun getError(): Int = gl.glGetError()
 
     override fun finish() = gl.glFinish()

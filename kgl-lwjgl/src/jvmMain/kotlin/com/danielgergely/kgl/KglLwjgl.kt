@@ -582,6 +582,13 @@ object KglLwjgl : Kgl {
         }
     }
 
+    override fun pixelStorei(
+        pname: Int,
+        parameter: Int,
+    ) {
+        GL.glPixelStorei(pname, parameter)
+    }
+
     override fun scissor(
         x: Int,
         y: Int,

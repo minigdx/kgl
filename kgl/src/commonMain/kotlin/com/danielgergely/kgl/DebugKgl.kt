@@ -777,4 +777,14 @@ public class DebugKgl(
         runAfter("scissor")
         return ret
     }
+
+    override fun pixelStorei(
+        pname: Int,
+        parameter: Int,
+    ) {
+        runBefore("pixelStorei")
+        val ret = kgl.pixelStorei(pname, parameter)
+        runAfter("pixelStorei")
+        return ret
+    }
 }

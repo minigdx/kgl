@@ -353,6 +353,13 @@ class KglJs(private val gl: WebGL2RenderingContext) : Kgl {
         return gl.scissor(x, y, width, height)
     }
 
+    override fun pixelStorei(
+        pname: Int,
+        parameter: Int,
+    ) {
+        return gl.pixelStorei(pname, parameter)
+    }
+
     override fun getError(): Int = gl.getError()
 
     override fun finish(): Unit = gl.finish()

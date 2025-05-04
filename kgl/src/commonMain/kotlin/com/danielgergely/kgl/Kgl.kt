@@ -371,4 +371,13 @@ interface Kgl {
         width: Int,
         height: Int,
     )
+
+    /**
+     * set pixel storage modes
+     * @see: https://registry.khronos.org/OpenGL-Refpages/gl4/html/glPixelStore.xhtml
+     */
+    fun pixelStorei(
+        pname: Int,
+        parameter: Int,
+    )
 }
