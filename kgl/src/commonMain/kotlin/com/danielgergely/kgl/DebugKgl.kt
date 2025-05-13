@@ -787,4 +787,16 @@ public class DebugKgl(
         runAfter("pixelStorei")
         return ret
     }
+
+    override fun blendFuncSeparate(
+        srcRGB: Int,
+        dstRGB: Int,
+        srcAlpha: Int,
+        dstAlpha: Int,
+    ) {
+        runBefore("blendFuncSeparate")
+        val ret = kgl.blendFuncSeparate(srcRGB, dstRGB, srcAlpha, dstAlpha)
+        runAfter("blendFuncSeparate")
+        return ret
+    }
 }

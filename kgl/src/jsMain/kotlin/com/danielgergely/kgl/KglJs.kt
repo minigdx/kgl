@@ -360,6 +360,15 @@ class KglJs(private val gl: WebGL2RenderingContext) : Kgl {
         return gl.pixelStorei(pname, parameter)
     }
 
+    override fun blendFuncSeparate(
+        srcRGB: Int,
+        dstRGB: Int,
+        srcAlpha: Int,
+        dstAlpha: Int,
+    ) {
+        return gl.blendFuncSeparate(srcRGB, dstRGB, srcAlpha, dstAlpha)
+    }
+
     override fun getError(): Int = gl.getError()
 
     override fun finish(): Unit = gl.finish()

@@ -238,6 +238,13 @@ object KglAndroid : Kgl {
         dFactor: Int,
     ) = GL.glBlendFunc(sFactor, dFactor)
 
+    override fun blendFuncSeparate(
+        srcRGB: Int,
+        dstRGB: Int,
+        srcAlpha: Int,
+        dstAlpha: Int,
+    ) = GL.glBlendFuncSeparate(srcRGB, dstRGB, srcAlpha, dstAlpha)
+
     override fun cullFace(mode: Int) = GL.glCullFace(mode)
 
     override fun viewport(

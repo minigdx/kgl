@@ -435,6 +435,15 @@ class KglJogl(private val gl: GL) : Kgl {
         return gl.glPixelStorei(pname, parameter)
     }
 
+    override fun blendFuncSeparate(
+        srcRGB: Int,
+        dstRGB: Int,
+        srcAlpha: Int,
+        dstAlpha: Int,
+    ) {
+        return gl.glBlendFuncSeparate(srcRGB, dstRGB, srcAlpha, dstAlpha)
+    }
+
     override fun getError(): Int = gl.glGetError()
 
     override fun finish() = gl.glFinish()

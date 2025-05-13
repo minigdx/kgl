@@ -199,9 +199,22 @@ interface Kgl {
         value: FloatArray,
     )
 
+    /**
+     * specify pixel arithmetic
+     */
     fun blendFunc(
         sFactor: Int,
         dFactor: Int,
+    )
+
+    /**
+     * specify pixel arithmetic for RGB and alpha components separately
+     */
+    fun blendFuncSeparate(
+        srcRGB: Int,
+        dstRGB: Int,
+        srcAlpha: Int,
+        dstAlpha: Int,
     )
 
     fun cullFace(mode: Int)

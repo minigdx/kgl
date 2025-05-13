@@ -589,6 +589,15 @@ object KglLwjgl : Kgl {
         GL.glPixelStorei(pname, parameter)
     }
 
+    override fun blendFuncSeparate(
+        srcRGB: Int,
+        dstRGB: Int,
+        srcAlpha: Int,
+        dstAlpha: Int,
+    ) {
+        GL.glBlendFuncSeparate(srcRGB, dstRGB, srcAlpha, dstAlpha)
+    }
+
     override fun scissor(
         x: Int,
         y: Int,
