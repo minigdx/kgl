@@ -444,6 +444,10 @@ class KglJogl(private val gl: GL) : Kgl {
         return gl.glBlendFuncSeparate(srcRGB, dstRGB, srcAlpha, dstAlpha)
     }
 
+    override fun stencilMask(mask: Int) {
+        return gl.glStencilMask(mask)
+    }
+
     override fun getError(): Int = gl.glGetError()
 
     override fun finish() = gl.glFinish()

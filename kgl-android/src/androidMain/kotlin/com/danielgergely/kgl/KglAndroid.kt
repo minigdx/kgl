@@ -453,6 +453,10 @@ object KglAndroid : Kgl {
     ) {
         GL.glPixelStorei(pname, parameter)
     }
+
+    override fun stencilMask(mask: Int) {
+        GL.glStencilMask(mask)
+    }
 }
 
 private fun FloatArray.vSize(vecSize: Int): Int {

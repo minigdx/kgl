@@ -589,6 +589,10 @@ object KglLwjgl : Kgl {
         GL.glPixelStorei(pname, parameter)
     }
 
+    override fun stencilMask(mask: Int) {
+        GL.glStencilMask(mask)
+    }
+
     override fun blendFuncSeparate(
         srcRGB: Int,
         dstRGB: Int,

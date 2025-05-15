@@ -393,4 +393,10 @@ interface Kgl {
         pname: Int,
         parameter: Int,
     )
+
+    /**
+     * control the front and back writing of individual bits in the stencil planes
+     * @see: https://registry.khronos.org/OpenGL-Refpages/es2.0/xhtml/glStencilMask.xml
+     */
+    fun stencilMask(mask: Int)
 }

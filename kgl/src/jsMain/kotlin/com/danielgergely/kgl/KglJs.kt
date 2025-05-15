@@ -369,6 +369,10 @@ class KglJs(private val gl: WebGL2RenderingContext) : Kgl {
         return gl.blendFuncSeparate(srcRGB, dstRGB, srcAlpha, dstAlpha)
     }
 
+    override fun stencilMask(mask: Int) {
+        gl.stencilMask(mask)
+    }
+
     override fun getError(): Int = gl.getError()
 
     override fun finish(): Unit = gl.finish()

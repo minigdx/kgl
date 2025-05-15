@@ -799,4 +799,11 @@ public class DebugKgl(
         runAfter("blendFuncSeparate")
         return ret
     }
+
+    override fun stencilMask(mask: Int) {
+        runBefore("stencilMask")
+        val ret = kgl.stencilMask(mask)
+        runAfter("stencilMask")
+        return ret
+    }
 }
