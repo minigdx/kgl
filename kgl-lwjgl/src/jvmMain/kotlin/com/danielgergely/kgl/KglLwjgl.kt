@@ -593,6 +593,26 @@ object KglLwjgl : Kgl {
         GL.glStencilMask(mask)
     }
 
+    override fun stencilFunc(
+        func: Int,
+        ref: Int,
+        mask: Int,
+    ) {
+        GL.glStencilFunc(func, ref, mask)
+    }
+
+    override fun stencilOp(
+        sfail: Int,
+        dpFail: Int,
+        dppas: Int,
+    ) {
+        GL.glStencilOp(sfail, dpFail, dppas)
+    }
+
+    override fun clearStencil(s: Int) {
+        GL.glClearStencil(s)
+    }
+
     override fun blendFuncSeparate(
         srcRGB: Int,
         dstRGB: Int,

@@ -373,6 +373,26 @@ class KglJs(private val gl: WebGL2RenderingContext) : Kgl {
         gl.stencilMask(mask)
     }
 
+    override fun stencilOp(
+        sfail: Int,
+        dpFail: Int,
+        dppas: Int,
+    ) {
+        gl.stencilOp(sfail, dpFail, dppas)
+    }
+
+    override fun clearStencil(s: Int) {
+        gl.clearStencil(s)
+    }
+
+    override fun stencilFunc(
+        func: Int,
+        ref: Int,
+        mask: Int,
+    ) {
+        gl.stencilFunc(func, ref, mask)
+    }
+
     override fun getError(): Int = gl.getError()
 
     override fun finish(): Unit = gl.finish()

@@ -806,4 +806,33 @@ public class DebugKgl(
         runAfter("stencilMask")
         return ret
     }
+
+    override fun stencilOp(
+        sfail: Int,
+        dpFail: Int,
+        dppas: Int,
+    ) {
+        runBefore("stencilOp")
+        val ret = kgl.stencilOp(sfail, dpFail, dppas)
+        runAfter("stencilOp")
+        return ret
+    }
+
+    override fun clearStencil(s: Int) {
+        runBefore("clearStencil")
+        val ret = kgl.clearStencil(s)
+        runAfter("clearStencil")
+        return ret
+    }
+
+    override fun stencilFunc(
+        func: Int,
+        ref: Int,
+        mask: Int,
+    ) {
+        runBefore("stencilFunc")
+        val ret = kgl.stencilFunc(func, ref, mask)
+        runAfter("stencilFunc")
+        return ret
+    }
 }

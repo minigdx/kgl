@@ -457,6 +457,26 @@ object KglAndroid : Kgl {
     override fun stencilMask(mask: Int) {
         GL.glStencilMask(mask)
     }
+
+    override fun stencilFunc(
+        func: Int,
+        ref: Int,
+        mask: Int,
+    ) {
+        GL.glStencilFunc(func, ref, mask)
+    }
+
+    override fun stencilOp(
+        sfail: Int,
+        dpFail: Int,
+        dppas: Int,
+    ) {
+        GL.glStencilOp(sfail, dpFail, dppas)
+    }
+
+    override fun clearStencil(s: Int) {
+        GL.glClearStencil(s)
+    }
 }
 
 private fun FloatArray.vSize(vecSize: Int): Int {

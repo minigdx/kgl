@@ -399,4 +399,30 @@ interface Kgl {
      * @see: https://registry.khronos.org/OpenGL-Refpages/es2.0/xhtml/glStencilMask.xml
      */
     fun stencilMask(mask: Int)
+
+    /**
+     * set front and back function and reference value for stencil testing
+     * @see: https://registry.khronos.org/OpenGL-Refpages/gl4/html/glStencilFunc.xhtml
+     */
+    fun stencilFunc(
+        func: Int,
+        ref: Int,
+        mask: Int,
+    )
+
+    /**
+     * set front and back stencil test actions
+     * @see: https://registry.khronos.org/OpenGL-Refpages/gl4/html/glStencilOp.xhtml
+     */
+    fun stencilOp(
+        sfail: Int,
+        dpFail: Int,
+        dppas: Int,
+    )
+
+    /**
+     *  specify the clear value for the stencil buffer
+     *  @see: https://registry.khronos.org/OpenGL-Refpages/es2.0/xhtml/glClearStencil.xml
+     */
+    fun clearStencil(s: Int)
 }

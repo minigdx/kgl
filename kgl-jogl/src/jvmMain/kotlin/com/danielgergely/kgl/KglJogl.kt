@@ -448,6 +448,26 @@ class KglJogl(private val gl: GL) : Kgl {
         return gl.glStencilMask(mask)
     }
 
+    override fun stencilOp(
+        sfail: Int,
+        dpFail: Int,
+        dppas: Int,
+    ) {
+        return gl.glStencilOp(sfail, dpFail, dppas)
+    }
+
+    override fun clearStencil(s: Int) {
+        return gl.glClearStencil(s)
+    }
+
+    override fun stencilFunc(
+        func: Int,
+        ref: Int,
+        mask: Int,
+    ) {
+        return gl.glStencilFunc(func, ref, mask)
+    }
+
     override fun getError(): Int = gl.glGetError()
 
     override fun finish() = gl.glFinish()
