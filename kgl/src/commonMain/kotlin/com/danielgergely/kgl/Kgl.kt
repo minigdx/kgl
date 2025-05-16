@@ -425,4 +425,15 @@ interface Kgl {
      *  @see: https://registry.khronos.org/OpenGL-Refpages/es2.0/xhtml/glClearStencil.xml
      */
     fun clearStencil(s: Int)
+
+    /**
+     * enable and disable writing of frame buffer color components
+     * @see: https://registry.khronos.org/OpenGL-Refpages/gl4/html/glColorMask.xhtml
+     */
+    fun colorMask(
+        red: Boolean,
+        green: Boolean,
+        blue: Boolean,
+        alpha: Boolean,
+    )
 }

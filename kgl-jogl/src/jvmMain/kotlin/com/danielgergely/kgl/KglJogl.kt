@@ -448,6 +448,15 @@ class KglJogl(private val gl: GL) : Kgl {
         return gl.glStencilMask(mask)
     }
 
+    override fun colorMask(
+        red: Boolean,
+        green: Boolean,
+        blue: Boolean,
+        alpha: Boolean,
+    ) {
+        gl.glColorMask(red, green, blue, alpha)
+    }
+
     override fun stencilOp(
         sfail: Int,
         dpFail: Int,

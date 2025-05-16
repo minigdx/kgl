@@ -807,6 +807,18 @@ public class DebugKgl(
         return ret
     }
 
+    override fun colorMask(
+        red: Boolean,
+        green: Boolean,
+        blue: Boolean,
+        alpha: Boolean,
+    ) {
+        runBefore("colorMask")
+        val ret = kgl.colorMask(red, green, blue, alpha)
+        runAfter("colorMask")
+        return ret
+    }
+
     override fun stencilOp(
         sfail: Int,
         dpFail: Int,

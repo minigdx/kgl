@@ -477,6 +477,15 @@ object KglAndroid : Kgl {
     override fun clearStencil(s: Int) {
         GL.glClearStencil(s)
     }
+
+    override fun colorMask(
+        red: Boolean,
+        green: Boolean,
+        blue: Boolean,
+        alpha: Boolean,
+    ) {
+        GL.glColorMask(red, green, blue, alpha)
+    }
 }
 
 private fun FloatArray.vSize(vecSize: Int): Int {

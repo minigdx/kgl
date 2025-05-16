@@ -593,6 +593,15 @@ object KglLwjgl : Kgl {
         GL.glStencilMask(mask)
     }
 
+    override fun colorMask(
+        red: Boolean,
+        green: Boolean,
+        blue: Boolean,
+        alpha: Boolean,
+    ) {
+        GL.glColorMask(red, green, blue, alpha)
+    }
+
     override fun stencilFunc(
         func: Int,
         ref: Int,

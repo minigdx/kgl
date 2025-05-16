@@ -373,6 +373,15 @@ class KglJs(private val gl: WebGL2RenderingContext) : Kgl {
         gl.stencilMask(mask)
     }
 
+    override fun colorMask(
+        red: Boolean,
+        green: Boolean,
+        blue: Boolean,
+        alpha: Boolean,
+    ) {
+        gl.colorMask(red, green, blue, alpha)
+    }
+
     override fun stencilOp(
         sfail: Int,
         dpFail: Int,
