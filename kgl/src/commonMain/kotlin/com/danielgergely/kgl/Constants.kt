@@ -131,6 +131,7 @@ public const val GL_UNSIGNED_INT: Int = 0x1405
 public const val GL_FLOAT: Int = 0x1406
 public const val GL_FIXED: Int = 0x140C
 public const val GL_STENCIL_INDEX: Int = 0x1901
+public const val GL_DEPTH24_STENCIL8: Int = 0x88f0
 public const val GL_DEPTH_COMPONENT: Int = 0x1902
 public const val GL_RED: Int = 0x1903
 public const val GL_GREEN: Int = 0x1904
