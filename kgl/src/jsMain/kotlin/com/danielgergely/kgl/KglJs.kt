@@ -463,4 +463,73 @@ class KglJs(private val gl: WebGL2RenderingContext) : Kgl {
     ) {
         gl.readPixels(x, y, width, height, format, type, buffer.getJsBufferWithOffset())
     }
+
+    override fun mapBufferRange(
+        target: Int,
+        offset: Int,
+        length: Int,
+        access: Int,
+    ): ByteBuffer? {
+        // WebGL doesn't support direct buffer mapping
+        // This is a limitation of WebGL and would require a different approach
+        // such as using buffer sub data operations
+        console.warn("mapBufferRange is not supported in WebGL. Consider using bufferSubData instead.")
+        return null
+    }
+
+    override fun unmapBuffer(target: Int): Boolean {
+        // WebGL doesn't support buffer unmapping
+        console.warn("unmapBuffer is not supported in WebGL.")
+        return false
+    }
+
+    override fun bufferData(
+        target: Int,
+        size: Int,
+        usage: Int,
+    ) {
+        gl.bufferData(target, size, usage)
+    }
+
+    override fun texSubImage2D(
+        target: Int,
+        level: Int,
+        xoffset: Int,
+        yoffset: Int,
+        width: Int,
+        height: Int,
+        format: Int,
+        type: Int,
+        pixels: Buffer?,
+    ) {
+        gl.texSubImage2D(
+            target,
+            level,
+            xoffset,
+            yoffset,
+            width,
+            height,
+            format,
+            type,
+            pixels?.getJsBufferWithOffset(),
+        )
+    }
+
+    override fun texSubImage2D(
+        target: Int,
+        level: Int,
+        xoffset: Int,
+        yoffset: Int,
+        resource: TextureResource,
+    ) {
+        gl.texSubImage2D(
+            target,
+            level,
+            xoffset,
+            yoffset,
+            GL_RGBA,
+            GL_UNSIGNED_BYTE,
+            resource.image,
+        )
+    }
 }

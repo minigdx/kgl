@@ -639,4 +639,133 @@ object KglLwjgl : Kgl {
     ) {
         GL.glScissor(x, y, width, height)
     }
+
+    override fun mapBufferRange(
+        target: Int,
+        offset: Int,
+        length: Int,
+        access: Int,
+    ): com.danielgergely.kgl.ByteBuffer? {
+        val buffer = GL.glMapBufferRange(target, offset.toLong(), length.toLong(), access)
+        return buffer?.let { ByteBuffer(buffer) }
+    }
+
+    override fun unmapBuffer(target: Int): Boolean {
+        return GL.glUnmapBuffer(target)
+    }
+
+    override fun bufferData(
+        target: Int,
+        size: Int,
+        usage: Int,
+    ) {
+        GL.glBufferData(target, size.toLong(), usage)
+    }
+
+    override fun texSubImage2D(
+        target: Int,
+        level: Int,
+        xoffset: Int,
+        yoffset: Int,
+        width: Int,
+        height: Int,
+        format: Int,
+        type: Int,
+        pixels: Buffer?,
+    ) {
+        if (pixels == null) {
+            GL.glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, 0L)
+        } else {
+            pixels.withJavaBuffer { javaBuffer ->
+                when (javaBuffer) {
+                    is ByteBuffer ->
+                        GL.glTexSubImage2D(
+                            target,
+                            level,
+                            xoffset,
+                            yoffset,
+                            width,
+                            height,
+                            format,
+                            type,
+                            javaBuffer,
+                        )
+
+                    is ShortBuffer ->
+                        GL.glTexSubImage2D(
+                            target,
+                            level,
+                            xoffset,
+                            yoffset,
+                            width,
+                            height,
+                            format,
+                            type,
+                            javaBuffer,
+                        )
+
+                    is IntBuffer ->
+                        GL.glTexSubImage2D(
+                            target,
+                            level,
+                            xoffset,
+                            yoffset,
+                            width,
+                            height,
+                            format,
+                            type,
+                            javaBuffer,
+                        )
+
+                    is FloatBuffer ->
+                        GL.glTexSubImage2D(
+                            target,
+                            level,
+                            xoffset,
+                            yoffset,
+                            width,
+                            height,
+                            format,
+                            type,
+                            javaBuffer,
+                        )
+
+                    is DoubleBuffer ->
+                        GL.glTexSubImage2D(
+                            target,
+                            level,
+                            xoffset,
+                            yoffset,
+                            width,
+                            height,
+                            format,
+                            type,
+                            javaBuffer,
+                        )
+
+                    else -> throw IllegalArgumentException("Unsupported buffer type: ${javaBuffer::class}")
+                }
+            }
+        }
+    }
+
+    override fun texSubImage2D(
+        target: Int,
+        level: Int,
+        xoffset: Int,
+        yoffset: Int,
+        resource: TextureResource,
+    ) {
+        texSubImage2D(
+            target,
+            level,
+            xoffset,
+            yoffset,
+            resource.width,
+            resource.height,
+            GL_RGBA,
+            GL_UNSIGNED_BYTE,
+            resource.data,
+        )
+    }
 }

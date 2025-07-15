@@ -213,6 +213,17 @@ public class DebugKgl(
         return ret
     }
 
+    override fun bufferData(
+        target: Int,
+        size: Int,
+        usage: Int,
+    ) {
+        runBefore("bufferData")
+        val ret = kgl.bufferData(target, size, usage)
+        runAfter("bufferData")
+        return ret
+    }
+
     override fun deleteBuffer(buffer: GlBuffer) {
         runBefore("deleteBuffer")
         val ret = kgl.deleteBuffer(buffer)
@@ -527,6 +538,33 @@ public class DebugKgl(
         return ret
     }
 
+    override fun texSubImage2D(
+        target: Int,
+        level: Int,
+        xoffset: Int,
+        yoffset: Int,
+        width: Int,
+        height: Int,
+        format: Int,
+        type: Int,
+        pixels: Buffer?,
+    ) {
+        runBefore("texSubImage2D")
+        val ret = kgl.texSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels)
+        runAfter("texSubImage2D")
+        return ret
+    }
+
+    override fun texSubImage2D(
+        target: Int,
+        level: Int,
+        xoffset: Int,
+        yoffset: Int,
+        resource: TextureResource,
+    ) {
+        TODO("Not yet implemented")
+    }
+
     override fun activeTexture(texture: Int) {
         runBefore("activeTexture")
         val ret = kgl.activeTexture(texture)
@@ -816,6 +854,25 @@ public class DebugKgl(
         runBefore("colorMask")
         val ret = kgl.colorMask(red, green, blue, alpha)
         runAfter("colorMask")
+        return ret
+    }
+
+    override fun mapBufferRange(
+        target: Int,
+        offset: Int,
+        length: Int,
+        access: Int,
+    ): ByteBuffer? {
+        runBefore("mapBufferRange")
+        val ret = kgl.mapBufferRange(target, offset, length, access)
+        runAfter("mapBufferRange")
+        return ret
+    }
+
+    override fun unmapBuffer(target: Int): Boolean {
+        runBefore("unmapBuffer")
+        val ret = kgl.unmapBuffer(target)
+        runAfter("unmapBuffer")
         return ret
     }
 

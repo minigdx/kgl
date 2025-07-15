@@ -548,6 +548,68 @@ class KglJogl(private val gl: GL) : Kgl {
             gl.glReadPixels(x, y, width, height, format, type, javaBuffer)
         }
     }
+
+    override fun mapBufferRange(
+        target: Int,
+        offset: Int,
+        length: Int,
+        access: Int,
+    ): com.danielgergely.kgl.ByteBuffer? {
+        val buffer = gl.glMapBufferRange(target, offset.toLong(), length.toLong(), access)
+        return buffer?.let { com.danielgergely.kgl.ByteBuffer(it) }
+    }
+
+    override fun unmapBuffer(target: Int): Boolean {
+        return gl.glUnmapBuffer(target)
+    }
+
+    override fun bufferData(
+        target: Int,
+        size: Int,
+        usage: Int,
+    ) {
+        gl.glBufferData(target, size.toLong(), null, usage)
+    }
+
+    override fun texSubImage2D(
+        target: Int,
+        level: Int,
+        xoffset: Int,
+        yoffset: Int,
+        width: Int,
+        height: Int,
+        format: Int,
+        type: Int,
+        pixels: Buffer?,
+    ) {
+        if (pixels == null) {
+            gl.glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, 0L)
+        } else {
+            pixels.withJavaBuffer { javaBuffer ->
+                gl.glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, javaBuffer)
+            }
+        }
+    }
+
+    override fun texSubImage2D(
+        target: Int,
+        level: Int,
+        xoffset: Int,
+        yoffset: Int,
+        resource: TextureResource,
+    ) {
+        texSubImage2D(
+            target,
+            level,
+            xoffset,
+            yoffset,
+            resource.width,
+            resource.height,
+            GL_RGBA,
+            GL_UNSIGNED_BYTE,
+            resource.data,
+        )
+    }
 }
 
 fun imageToByteBuffer(image: BufferedImage): ByteBuffer {

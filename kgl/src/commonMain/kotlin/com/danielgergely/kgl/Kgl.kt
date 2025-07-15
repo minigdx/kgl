@@ -84,6 +84,18 @@ interface Kgl {
         usage: Int,
     )
 
+    /**
+     * Creates and initializes a buffer object's data store with uninitialized data
+     * @param target specifies the target to which the buffer object is bound
+     * @param size specifies the size in bytes of the buffer object's new data store
+     * @param usage specifies the expected usage pattern of the data store
+     */
+    fun bufferData(
+        target: Int,
+        size: Int,
+        usage: Int,
+    )
+
     fun deleteBuffer(buffer: GlBuffer)
 
     fun vertexAttribPointer(
@@ -261,6 +273,48 @@ interface Kgl {
         buffer: Buffer?,
     )
 
+    /**
+     * Specify a two-dimensional texture subimage
+     * @param target specifies the target texture
+     * @param level specifies the level-of-detail number
+     * @param xoffset specifies a texel offset in the x direction within the texture array
+     * @param yoffset specifies a texel offset in the y direction within the texture array
+     * @param width specifies the width of the texture subimage
+     * @param height specifies the height of the texture subimage
+     * @param format specifies the format of the pixel data
+     * @param type specifies the data type of the pixel data
+     * @param pixels specifies a pointer to the image data in memory, or null to use PBO
+     * @see: https://registry.khronos.org/OpenGL-Refpages/gl4/html/glTexSubImage2D.xhtml
+     */
+    fun texSubImage2D(
+        target: Int,
+        level: Int,
+        xoffset: Int,
+        yoffset: Int,
+        width: Int,
+        height: Int,
+        format: Int,
+        type: Int,
+        pixels: Buffer?,
+    )
+
+    /**
+     * Specify a two-dimensional texture subimage from a resource
+     * @param target specifies the target texture
+     * @param level specifies the level-of-detail number
+     * @param xoffset specifies a texel offset in the x direction within the texture array
+     * @param yoffset specifies a texel offset in the y direction within the texture array
+     * @param resource the texture resource containing the image data
+     * @see: https://registry.khronos.org/OpenGL-Refpages/gl4/html/glTexSubImage2D.xhtml
+     */
+    fun texSubImage2D(
+        target: Int,
+        level: Int,
+        xoffset: Int,
+        yoffset: Int,
+        resource: TextureResource,
+    )
+
     fun activeTexture(texture: Int)
 
     fun bindTexture(
@@ -436,4 +490,28 @@ interface Kgl {
         blue: Boolean,
         alpha: Boolean,
     )
+
+    /**
+     * Map a section of a buffer object's data store
+     * @param target specifies the target to which the buffer object is bound
+     * @param offset specifies the start of the buffer subrange, in basic machine units
+     * @param length specifies the length of the buffer subrange, in basic machine units
+     * @param access specifies the access flags (e.g., GL_MAP_WRITE_BIT)
+     * @return a ByteBuffer representing the mapped buffer range, or null if mapping failed
+     * @see: https://registry.khronos.org/OpenGL-Refpages/gl4/html/glMapBufferRange.xhtml
+     */
+    fun mapBufferRange(
+        target: Int,
+        offset: Int,
+        length: Int,
+        access: Int,
+    ): ByteBuffer?
+
+    /**
+     * Release the mapping of a buffer object's data store
+     * @param target specifies the target to which the buffer object is bound
+     * @return true if the unmapping succeeded, false otherwise
+     * @see: https://registry.khronos.org/OpenGL-Refpages/gl4/html/glUnmapBuffer.xhtml
+     */
+    fun unmapBuffer(target: Int): Boolean
 }

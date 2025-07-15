@@ -346,3 +346,15 @@ public const val GL_RG32UI: Int = 0x823C
 public const val GL_RG: Int = 0x8227
 public const val GL_COMPRESSED_RED: Int = 0x8225
 public const val GL_COMPRESSED_RG: Int = 0x8226
+
+// PBO (Pixel Buffer Object) constants
+public const val GL_PIXEL_UNPACK_BUFFER: Int = 0x88EC
+public const val GL_PIXEL_PACK_BUFFER: Int = 0x88EB
+
+// Buffer mapping constants
+public const val GL_MAP_WRITE_BIT: Int = 0x0002
+public const val GL_MAP_READ_BIT: Int = 0x0001
+public const val GL_MAP_INVALIDATE_RANGE_BIT: Int = 0x0004
+public const val GL_MAP_INVALIDATE_BUFFER_BIT: Int = 0x0008
+public const val GL_MAP_FLUSH_EXPLICIT_BIT: Int = 0x0010
+public const val GL_MAP_UNSYNCHRONIZED_BIT: Int = 0x0020

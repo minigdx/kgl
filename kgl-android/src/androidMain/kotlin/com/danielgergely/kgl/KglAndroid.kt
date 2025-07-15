@@ -486,6 +486,70 @@ object KglAndroid : Kgl {
     ) {
         GL.glColorMask(red, green, blue, alpha)
     }
+
+    override fun mapBufferRange(
+        target: Int,
+        offset: Int,
+        length: Int,
+        access: Int,
+    ): ByteBuffer? {
+        val buffer = GL.glMapBufferRange(target, offset, length, access)
+        return buffer?.let { ByteBuffer(it as java.nio.ByteBuffer) }
+    }
+
+    override fun unmapBuffer(target: Int): Boolean {
+        return GL.glUnmapBuffer(target)
+    }
+
+    override fun bufferData(
+        target: Int,
+        size: Int,
+        usage: Int,
+    ) {
+        GL.glBufferData(target, size, null, usage)
+    }
+
+    override fun texSubImage2D(
+        target: Int,
+        level: Int,
+        xoffset: Int,
+        yoffset: Int,
+        width: Int,
+        height: Int,
+        format: Int,
+        type: Int,
+        pixels: Buffer?,
+    ) {
+        if (pixels == null) {
+            GL.glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, null)
+        } else {
+            pixels.withJavaBuffer { javaBuffer ->
+                GL.glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, javaBuffer)
+            }
+        }
+    }
+
+    override fun texSubImage2D(
+        target: Int,
+        level: Int,
+        xoffset: Int,
+        yoffset: Int,
+        resource: TextureResource,
+    ) {
+        resource.data.withJavaBuffer { javaBuffer ->
+            GL.glTexSubImage2D(
+                target,
+                level,
+                xoffset,
+                yoffset,
+                resource.width,
+                resource.height,
+                GL_RGBA,
+                GL_UNSIGNED_BYTE,
+                javaBuffer,
+            )
+        }
+    }
 }
 
 private fun FloatArray.vSize(vecSize: Int): Int {
