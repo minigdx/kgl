@@ -344,6 +344,11 @@ class KglJs(private val gl: WebGL2RenderingContext) : Kgl {
         return gl.drawElementsInstanced(mode, count, type, offset.toInt(), instanceCount)
     }
 
+    override fun vertexAttribDivisor(
+        index: Int,
+        divisor: Int,
+    ): Unit = gl.vertexAttribDivisor(index, divisor)
+
     override fun scissor(
         x: Int,
         y: Int,

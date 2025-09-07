@@ -562,7 +562,10 @@ public class DebugKgl(
         yoffset: Int,
         resource: TextureResource,
     ) {
-        TODO("Not yet implemented")
+        runBefore("texSubImage2D")
+        val ret = kgl.texSubImage2D(target, level, xoffset, yoffset, resource)
+        runAfter("texSubImage2D")
+        return ret
     }
 
     override fun activeTexture(texture: Int) {
@@ -666,6 +669,16 @@ public class DebugKgl(
         runBefore("drawElementsInstanced")
         val ret = kgl.drawElementsInstanced(mode, count, type, offset, instanceCount)
         runAfter("drawElementsInstanced")
+        return ret
+    }
+
+    override fun vertexAttribDivisor(
+        index: Int,
+        divisor: Int,
+    ) {
+        runBefore("vertexAttribDivisor")
+        val ret = kgl.vertexAttribDivisor(index, divisor)
+        runAfter("vertexAttribDivisor")
         return ret
     }
 

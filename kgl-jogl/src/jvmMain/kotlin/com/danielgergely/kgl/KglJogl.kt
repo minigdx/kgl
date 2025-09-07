@@ -610,6 +610,11 @@ class KglJogl(private val gl: GL) : Kgl {
             resource.data,
         )
     }
+
+    override fun vertexAttribDivisor(
+        index: Int,
+        divisor: Int,
+    ) = gl.glVertexAttribDivisor(index, divisor)
 }
 
 fun imageToByteBuffer(image: BufferedImage): ByteBuffer {

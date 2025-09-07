@@ -768,4 +768,9 @@ object KglLwjgl : Kgl {
             resource.data,
         )
     }
+
+    override fun vertexAttribDivisor(
+        index: Int,
+        divisor: Int,
+    ) = GL.glVertexAttribDivisor(index, divisor)
 }

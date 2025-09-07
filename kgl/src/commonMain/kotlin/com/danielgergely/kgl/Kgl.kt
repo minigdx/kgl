@@ -372,6 +372,15 @@ interface Kgl {
         instanceCount: Int,
     )
 
+    /**
+     * Modify the rate at which generic vertex attributes advance during instanced rendering
+     * @see: https://registry.khronos.org/OpenGL-Refpages/gl4/html/glVertexAttribDivisor.xhtml
+     */
+    fun vertexAttribDivisor(
+        index: Int,
+        divisor: Int,
+    )
+
     fun getError(): Int
 
     fun finish()

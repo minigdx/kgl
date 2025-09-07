@@ -550,6 +550,11 @@ object KglAndroid : Kgl {
             )
         }
     }
+
+    override fun vertexAttribDivisor(
+        index: Int,
+        divisor: Int,
+    ) = GL.glVertexAttribDivisor(index, divisor)
 }
 
 private fun FloatArray.vSize(vecSize: Int): Int {

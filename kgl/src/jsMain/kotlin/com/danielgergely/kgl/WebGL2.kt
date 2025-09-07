@@ -32,6 +32,14 @@ abstract external class WebGL2RenderingContext : WebGLRenderingContext {
         offset: Int,
         instanceCount: Int,
     )
+
+    /**
+     * Modify the rate at which generic vertex attributes advance during instanced rendering
+     */
+    fun vertexAttribDivisor(
+        index: Int,
+        divisor: Int,
+    )
 }
 
 external class WebGLVertexArrayObject : WebGLObject

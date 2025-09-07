@@ -178,7 +178,7 @@ object KglIos : Kgl {
     }
 
     override fun vertexAttribPointer(
-        location: Intveka,
+        location: Int,
         size: Int,
         type: Int,
         normalized: Boolean,
@@ -299,7 +299,7 @@ object KglIos : Kgl {
         border: Int,
         format: Int,
         type: Int,
-        buffer: Buffer
+        buffer: Buffer?
     ) {
         glTexImage2D(
             target.toUInt(),
@@ -310,7 +310,7 @@ object KglIos : Kgl {
             border,
             format.toUInt(),
             type.toUInt(),
-            buffer.ref()
+            buffer?.ref()
         )
     }
 
@@ -361,8 +361,8 @@ object KglIos : Kgl {
         glDrawArrays(mode.toUInt(), first, count)
     }
 
-    override fun drawElements(mode: Int, count: Int, type: Int) {
-        glDrawElements(mode.toUInt(), count, type.toUInt(), null)
+    override fun drawElements(mode: Int, count: Int, type: Int, offset: Long) {
+        glDrawElements(mode.toUInt(), count, type.toUInt(), offset.toLong().toCPointer<COpaque>())
     }
 
     override fun getError(): Int {
@@ -464,6 +464,107 @@ object KglIos : Kgl {
         buffer: Buffer
     ) {
         glReadPixels(x, y, width, height, format.toUInt(), type.toUInt(), buffer.ref())
+    }
+
+    override fun scissor(x: Int, y: Int, width: Int, height: Int) {
+        glScissor(x, y, width, height)
+    }
+
+    override fun pixelStorei(pname: Int, parameter: Int) {
+        glPixelStorei(pname.toUInt(), parameter)
+    }
+
+    override fun stencilMask(mask: Int) {
+        glStencilMask(mask.toUInt())
+    }
+
+    override fun stencilFunc(func: Int, ref: Int, mask: Int) {
+        glStencilFunc(func.toUInt(), ref, mask.toUInt())
+    }
+
+    override fun stencilOp(sfail: Int, dpFail: Int, dppas: Int) {
+        glStencilOp(sfail.toUInt(), dpFail.toUInt(), dppas.toUInt())
+    }
+
+    override fun clearStencil(s: Int) {
+        glClearStencil(s)
+    }
+
+    override fun colorMask(red: Boolean, green: Boolean, blue: Boolean, alpha: Boolean) {
+        glColorMask(red.toGl(), green.toGl(), blue.toGl(), alpha.toGl())
+    }
+
+    override fun blendFuncSeparate(srcRGB: Int, dstRGB: Int, srcAlpha: Int, dstAlpha: Int) {
+        glBlendFuncSeparate(srcRGB.toUInt(), dstRGB.toUInt(), srcAlpha.toUInt(), dstAlpha.toUInt())
+    }
+
+    override fun drawArraysInstanced(mode: Int, first: Int, count: Int, instanceCount: Int) {
+        glDrawArraysInstanced(mode.toUInt(), first, count, instanceCount)
+    }
+
+    override fun drawElementsInstanced(mode: Int, count: Int, type: Int, offset: Long, instanceCount: Int) {
+        glDrawElementsInstanced(mode.toUInt(), count, type.toUInt(), offset.toLong().toCPointer<COpaque>(), instanceCount)
+    }
+
+    override fun vertexAttribDivisor(index: Int, divisor: Int) {
+        glVertexAttribDivisor(index.toUInt(), divisor.toUInt())
+    }
+
+    override fun mapBufferRange(target: Int, offset: Int, length: Int, access: Int): com.danielgergely.kgl.ByteBuffer? {
+        val buffer = glMapBufferRange(target.toUInt(), offset.toLong(), length.toLong(), access.toUInt())
+        return buffer?.let { com.danielgergely.kgl.ByteBuffer(it.reinterpret<ByteVar>()) }
+    }
+
+    override fun unmapBuffer(target: Int): Boolean {
+        return glUnmapBuffer(target.toUInt()).toBoolean()
+    }
+
+    override fun bufferData(target: Int, size: Int, usage: Int) {
+        glBufferData(target.toUInt(), size.toLong(), null, usage.toUInt())
+    }
+
+    override fun texSubImage2D(
+        target: Int,
+        level: Int,
+        xoffset: Int,
+        yoffset: Int,
+        width: Int,
+        height: Int,
+        format: Int,
+        type: Int,
+        pixels: Buffer?
+    ) {
+        glTexSubImage2D(
+            target.toUInt(),
+            level,
+            xoffset,
+            yoffset,
+            width,
+            height,
+            format.toUInt(),
+            type.toUInt(),
+            pixels?.ref()
+        )
+    }
+
+    override fun texSubImage2D(
+        target: Int,
+        level: Int,
+        xoffset: Int,
+        yoffset: Int,
+        resource: TextureResource
+    ) {
+        texSubImage2D(
+            target,
+            level,
+            xoffset,
+            yoffset,
+            resource.width,
+            resource.height,
+            GL_RGBA,
+            GL_UNSIGNED_BYTE,
+            resource.data
+        )
     }
 }
 
