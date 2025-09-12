@@ -773,4 +773,8 @@ object KglLwjgl : Kgl {
         index: Int,
         divisor: Int,
     ) = GL.glVertexAttribDivisor(index, divisor)
+
+    override fun depthFunc(func: Int) {
+        GL.glDepthFunc(func)
+    }
 }

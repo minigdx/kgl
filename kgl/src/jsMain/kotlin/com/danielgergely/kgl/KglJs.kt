@@ -537,4 +537,6 @@ class KglJs(private val gl: WebGL2RenderingContext) : Kgl {
             resource.image,
         )
     }
+
+    override fun depthFunc(func: Int): Unit = gl.depthFunc(func)
 }

@@ -555,6 +555,8 @@ object KglAndroid : Kgl {
         index: Int,
         divisor: Int,
     ) = GL.glVertexAttribDivisor(index, divisor)
+
+    override fun depthFunc(func: Int) = GL.glDepthFunc(func)
 }
 
 private fun FloatArray.vSize(vecSize: Int): Int {

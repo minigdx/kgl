@@ -566,6 +566,10 @@ object KglIos : Kgl {
             resource.data
         )
     }
+
+    override fun depthFunc(func: Int) {
+        glDepthFunc(func.toUInt())
+    }
 }
 
 private fun Boolean.toGl(): GLboolean = if (this) 1u else 0u

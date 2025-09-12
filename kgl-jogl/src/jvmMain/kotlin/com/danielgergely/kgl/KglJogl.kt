@@ -615,6 +615,8 @@ class KglJogl(private val gl: GL) : Kgl {
         index: Int,
         divisor: Int,
     ) = gl.glVertexAttribDivisor(index, divisor)
+
+    override fun depthFunc(func: Int) = gl.glDepthFunc(func)
 }
 
 fun imageToByteBuffer(image: BufferedImage): ByteBuffer {

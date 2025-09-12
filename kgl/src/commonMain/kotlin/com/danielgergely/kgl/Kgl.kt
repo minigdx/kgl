@@ -381,6 +381,12 @@ interface Kgl {
         divisor: Int,
     )
 
+    /**
+     * Specify the value used for depth buffer comparisons
+     * @see: https://registry.khronos.org/OpenGL-Refpages/gl4/html/glDepthFunc.xhtml
+     */
+    fun depthFunc(func: Int)
+
     fun getError(): Int
 
     fun finish()

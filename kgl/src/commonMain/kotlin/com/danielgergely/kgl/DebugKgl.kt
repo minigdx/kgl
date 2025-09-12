@@ -682,6 +682,13 @@ public class DebugKgl(
         return ret
     }
 
+    override fun depthFunc(func: Int) {
+        runBefore("depthFunc")
+        val ret = kgl.depthFunc(func)
+        runAfter("depthFunc")
+        return ret
+    }
+
     override fun getError(): Int {
         runBefore("getError")
         val ret = kgl.getError()
